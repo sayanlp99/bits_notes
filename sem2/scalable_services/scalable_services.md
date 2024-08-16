@@ -29,6 +29,7 @@
   - **Consistency**: Every read receives the most recent write.
   - **Availability**: Every request receives a response, regardless of success or failure.
   - **Partition Tolerance**: The system continues to function despite network partitions.
+  ![1](1.png)
 
 ---
 
@@ -135,7 +136,7 @@
 - **Horizontal Partitioning (Sharding)**: Dividing data rows across multiple database nodes.
 - **Vertical Partitioning**: Dividing data columns across multiple database nodes.
 - **Functional Partitioning**: Dividing data based on functionality or use case.
-
+  
 ---
 
 ### NoSQL Databases
@@ -161,7 +162,7 @@
 
 #### HDFS Components
 - **Design**: Distributed file system designed for commodity hardware.
-
+  ![2](2.png)
 #### HDFS Write Process
 - **Steps**:
   1. Application writes as to any file system.
@@ -195,7 +196,7 @@
 #### Intermediate Steps
 - **Combine**: Optional process to reduce data on each mapper server before passing downstream.
 - **Partition**: Translates mapper output to feed the reducer and assigns it to a specific reducer.
-
+![3](3.png)
 ---
 
 ### Content Delivery Network (CDN)
@@ -203,7 +204,7 @@
 #### Concept
 - **Definition**: A network of globally distributed computers that move data efficiently.
 - **Example**: YouTube
-
+  ![4](4.png)
 ---
 
 ### Case Studies
@@ -211,6 +212,7 @@
 #### Video Streaming: Netflix
 - **History**: Launched in 1998 as a DVD rental service, moved to streaming in 2007.
 - **Architecture**: Streaming service architecture.
+  ![5](5.png)
 
 #### Web Conferencing: Zoom
 - **Features**: Cloud-native, optimized for video, distributed architecture, multimedia routing, multi-bitrate encoding, application layer QoS.
@@ -231,7 +233,7 @@
   - Replication
   - Kafka Producers and Consumers
   - Kafka Connect and Streams
-
+  ![6](6.png)
 ---
 
 ### Edge Computing
