@@ -29,7 +29,8 @@
   - **Consistency**: Every read receives the most recent write.
   - **Availability**: Every request receives a response, regardless of success or failure.
   - **Partition Tolerance**: The system continues to function despite network partitions.
-  ![1](1.png)
+  <img src="1.png" alt="1" width="250px" height="200px">
+
 
 ---
 
