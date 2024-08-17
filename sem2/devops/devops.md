@@ -13,6 +13,8 @@
 
    **Additional Info**: The Waterfall model is often criticized for its rigidity and lack of flexibility, especially in projects where requirements evolve over time.
 
+   <img src="1.png" alt="1" width="250px" height="200px">
+
 #### **2. Agile Methodology**
    - **Overview**: A flexible approach that values:
      - Individuals and interactions over processes and tools.
@@ -86,6 +88,8 @@
 
    **Additional Info**: A well-designed deployment pipeline reduces errors and ensures consistent delivery of software.
 
+   ![2](2.png)
+
 #### **10. Antipatterns**
    - **Manual Software Deployment**:
      - **Signs**: Extensive documentation, reliance on manual testing, frequent issues during deployment.
@@ -104,10 +108,6 @@
    **Additional Info**: Fast and comprehensive feedback loops ensure that issues are caught early, reducing the cost and effort required to fix them.
 
 ---
-The second slide discusses "DevOps Misconceptions and Dimensions." Here’s a summary of the key points covered:
-
----
-
 ### **DevOps Misconceptions and Dimensions**
 
 #### **DevOps Misconceptions**
@@ -136,7 +136,8 @@ The second slide discusses "DevOps Misconceptions and Dimensions." Here’s a su
 - **People**: Emphasizes the importance of human resources and collaboration in DevOps.
 - **Process**: Focuses on the methodologies and workflows that drive DevOps practices.
 - **Tools/Technology**: Encompasses the technical tools and platforms that support DevOps automation and operations.
-
+   
+   <img src="3.png" alt="3" width="250px" height="250px">
 ---
 
 
