@@ -484,3 +484,338 @@
   - **Complexity**: Requires proper configuration and maintenance.
   - **Single Point of Failure**: If not designed with redundancy, the load balancer itself can become a bottleneck or failure point. 
   ![11](11.png)
+
+### Microservices
+
+#### 1. **Introduction to Monolithic Architecture**
+   - **Monolith**: A single, large system where all components are tightly integrated and deployed together.
+     - **Characteristics**:
+       - Entire functionality is deployed as a single unit.
+       - Typically complex and difficult to maintain over time.
+     - **Disadvantages**:
+       - Growth in size makes it hard to manage.
+       - Slow development and deployment cycles.
+       - Adopting new technology is challenging and costly.
+      
+      ![12](12.png)
+
+      ![14](14.png)
+
+#### 2. **Need for Microservices**
+   - Modern systems require faster, more scalable solutions.
+   - Converting a monolithic system to microservices brings modularity and agility.
+   - However, converting every system may not always be necessary.
+
+#### 3. **Microservices Architecture**
+   - **Definition**: Microservices are independently deployable services that are designed around a business domain.
+   - **Characteristics**:
+     - **Small, Autonomous, Focused**: Each service does one thing well.
+     - **Loosely Coupled**: Services communicate through networks (HTTP, messaging).
+     - **Independent Development**: Each service can be developed, deployed, and scaled separately.
+     - **Single Responsibility**: Each microservice focuses on one business capability.
+  
+      ![13](13.png)
+
+#### 4. **Comparison: SOA vs Microservices**
+   - **SOA (Service-Oriented Architecture)**:
+     - Enterprise-wide architecture focused on reusability through service interfaces.
+     - Services share a common communication mechanism (Enterprise Service Bus, ESB).
+
+      ![15](15.png)
+
+   - **Microservices**:
+     - Application-scoped architecture with independent communication protocols (API, HTTP).
+     - Each service may manage its own data, potentially leading to some data duplication.
+
+   - **Key Differences**:
+     - **Scope**: SOA is enterprise-wide, microservices are application-specific.
+     - **Communication**: SOA relies on an ESB, while microservices use lightweight protocols.
+
+#### 5. **Key Characteristics of Microservices Architecture** (James Lewis & Martin Fowler)
+   - **Componentization via Services**: Each service is a modular unit.
+   - **Organized Around Business Capabilities**: Services map directly to specific business functions.
+   - **Smart Endpoints, Dumb Pipes**: Services handle logic, while communication remains simple.
+   - **Decentralized Governance & Data Management**: Each service governs itself and manages its own data.
+   - **Infrastructure Automation**: Continuous delivery and automated deployments are crucial.
+   - **Design for Failure**: Systems must be resilient and handle failures gracefully.
+   - **Evolutionary Design**: The architecture must evolve over time as business needs change.
+  
+      ![17](17.png)
+
+#### 6. **Case Studies**
+
+   - **FTGO (Food to Go) Case Study**:
+     - FTGO is an online food delivery service that encountered scaling and development speed issues with its monolithic architecture.
+     - **Issues**: Complexity, slow development, difficulty scaling.
+     - **Solution**: FTGO transitioned to microservices, improving scalability and allowing independent development of components.
+
+      - **Monolithic Architecture**
+      ![18](18.png)
+
+      - **Microservice Architecture**
+      ![19](19.png)
+
+   - **Netflix Case Study**:
+     - Netflix originally started with a monolithic system but struggled with scalability as it transitioned to streaming.
+     - **Challenges**: Monolithic codebase, tight coupling, scaling issues.
+     - **New Architecture**: Adopted microservices to achieve modularity, scalability, and virtualization, which allowed it to grow as a global streaming service.
+    
+
+      - **Monolithic Architecture**
+      ![20](20.png)
+
+      - **Microservice Architecture**
+      ![21](21.png)
+
+      - **Netflix follows continuous learning**
+      ![22](22.png)
+
+   - **Uber**:
+     - Uber transitioned to a **Domain-Oriented Microservices Architecture** to manage its large and dynamic operational model.
+     - **Domain-Oriented**: Organizes microservices around business domains like ride requests, driver management, and payments.
+
+#### 7. **When to Choose Microservices vs SOA**
+   - **Choosing Microservices**:
+     - If your application is complex, with distinct business units that need to be independently managed.
+     - If your development teams are decentralized and need autonomy.
+     - If you require high scalability and flexibility for continuous delivery.
+   - **Choosing SOA**:
+     - If you are dealing with large, enterprise-wide systems that require centralized control and data governance.
+
+#### 8. **Introduction to Microservices and Decomposition Strategies**
+   - **Microservices**: Architectural style where a system is divided into independently deployable services, each serving a specific business function.
+   - **Decomposition Strategies**: Techniques used to break down a monolithic system into smaller, manageable services.
+
+---
+
+### 9. **Advantages and Disadvantages of Microservices**
+#### **Advantages**:
+   - **Technology Heterogeneity**: Different microservices can use different technologies based on what is most suitable.
+  
+      ![23](23.png)
+   - **Resilience**: Failure in one service does not necessarily impact the entire system.
+   - **Ease of Deployment**: Independent deployment without affecting other parts of the system.
+   - **Scaling**: Each microservice can be scaled independently based on its demand.
+
+#### **Disadvantages**:
+   - **Complexity**: Managing multiple services adds complexity.
+   - **Challenging Service Identification**: Defining the right boundaries for each service is difficult.
+   - **Development & Testing**: Testing microservices as independent units and then together is complex.
+   - **Network Congestion & Latency**: Microservices communicate over a network, adding latency.
+   - **Data Integrity Issues**: Ensuring consistency across distributed systems can be challenging.
+   - **Careful Coordination**: Requires significant planning to coordinate services.
+   - **Versioning**: Managing multiple versions of services can be difficult.
+
+---
+
+### 10. **Organizational and Development Process**
+   - **Process & Organization**:
+     - As systems grow, refactoring a large engineering team into smaller, independent teams is essential for agility.
+   - **Agile Development**: Microservices require continuous delivery and DevOps practices, ensuring software is always deployable.
+   - **Emotional Impact**: Transitioning to microservices can impact team dynamics and emotions. It is important to address these during the transition.
+
+      ![24](24.png)
+
+#### **Three Stage Transition Model**:
+   1. **Ending, Losing, and Letting Go**: Accepting the need for change.
+   2. **The Neutral Zone**: Transition phase where the system is partially monolithic and partially microservices.
+   3. **The New Beginning**: Full transition to microservices.
+
+---
+
+### 11. **Microservices Design Principles**
+   - **Single Responsibility Principle**: Each microservice should implement only one business responsibility.
+   - **Abstraction & Information Hiding**: Services should expose a standardized API and hide internal implementation details.
+   - **Loose Coupling**: Services should minimize dependencies on each other.
+   - **Fault Tolerance**: Services should handle failures with minimal impact on the system.
+   - **Discoverability**: Services should have clear technical interfaces and business purposes.
+   - **Reusability**: While reusability is important, it is typically scoped to specific domains within a business.
+
+---
+
+### 12. **Steps for Defining Microservices Architecture**
+   1. **Identify System Operations**: Understand the various operations the system must perform.
+   2. **Identify Services**: Define services based on business operations.
+      ![26](26.png)
+   3. **Define Service APIs and Collaborations**: Determine how services will interact with each other through APIs.
+
+      ![25](25.png)
+
+---
+
+### 13. **Shared Libraries and Service Size**
+   - **Shared Libraries**: Useful for code reusability but can introduce unintended dependencies between services. Use for functionality that is unlikely to change.
+   - **Service Size**: Focus on designing a well-defined service rather than worrying about its size. Aim for small, loosely coupled services.
+
+---
+
+### 14. **Transition from Monolith to Microservices**
+   - **Challenges in Rebuilding**: Complete replacement of the monolith takes longer and is riskier.
+   - **Strangler Pattern**: Gradual transition from a monolith to microservices by replacing one functionality at a time with a new service.
+     - **Issues with Strangler Pattern**:
+       - Handling data and services used by both legacy and new systems.
+       - Deciding which functionality to start replacing first.
+
+---
+
+### 15. **Strangler's Pattern**
+
+#### **Overview of Strangler Pattern**
+   - **Definition**: A gradual approach to refactoring a monolithic application by incrementally replacing it with microservices. The new system coexists with the legacy monolith, eventually “strangling” or replacing it.
+
+      ![28](28.png)
+
+#### **How Strangler Pattern Works**:
+   - **Step-by-Step Migration**: Instead of a complete rewrite of the monolith, the system transitions gradually by replacing parts of the monolith with new microservices.
+   - **New Functionality**: Any new feature is added as a new microservice, not in the monolith.
+   - **Existing Functionality**: Slowly migrate existing monolith functionalities to microservices one by one.
+  
+      ![27](27.png)
+      ![29](29.png)
+
+#### **When to Use the Strangler Pattern**:
+   - **Large, Complex Systems**: Best suited for large systems where a complete rewrite is not feasible.
+   - **Reduced Risk**: By incrementally replacing components, it reduces the risk of breaking the system.
+   - **Easy Transition**: You can continue using parts of the legacy system while building and deploying microservices.
+
+#### **Challenges with Strangler Pattern**:
+   - **Service and Data Handling**: Managing services and data stores shared by both the monolith and new microservices can be tricky.
+   - **Choosing Where to Start**: Deciding which part of the monolith to break off first can be challenging.
+   - **Coordinating Migration**: Keeping track of which functionalities are migrated and which still rely on the monolith is critical.
+
+#### **When Not to Use the Strangler Pattern**:
+   - **No Intercepting Requests**: If you cannot intercept requests to the back-end system, this pattern might not be suitable.
+   - **Smaller Systems**: For smaller, simpler systems, a full rewrite may be easier than using the Strangler Pattern
+
+---
+
+### 16. **Decomposition Patterns**
+#### **Decompose by Business Capability**:
+   - A **business capability** is a core function that generates value for the business.
+     - Example: For an online store, business capabilities include order management, inventory management, shipping, etc.
+   - Once capabilities are identified, services are defined for each capability or a group of related capabilities.
+
+      ![30](30.png)
+
+#### **Decompose by Subdomain (DDD)**:
+   - **Domain-Driven Design (DDD)**: Focuses on building software around business subdomains.
+     - Subdomains for an online food delivery service (FTGO) could include order taking, order management, delivery, and financials.
+   - Each subdomain forms a bounded context, which becomes a microservice or a set of microservices.
+
+      ![31](31.png)
+
+---
+
+### 17. **Decomposition Guidelines**
+   - **Single Responsibility Principle**: Services should have only one reason to change.
+   - **Common Closure Principle**: Group changes together that occur for the same reason.
+
+---
+
+### 18. **Decomposition Strategies and Communication Between Microservices**
+   - **Decomposition Strategies**: Techniques to break down monolithic applications into microservices.
+   - **Communication Between Microservices**: Defines how services communicate and exchange data, either synchronously or asynchronously.
+
+---
+
+### 19. **Database-Related Patterns for Microservices**
+
+#### **Shared Database Pattern**:
+   - **Use Case**: When multiple services need access to shared, read-only static reference data or during transitions.
+   - **Problems**:
+     - Conflict between shared and hidden data.
+     - Control over data is limited.
+  
+      ![32](32.png)
+
+#### **Database View Pattern**:
+   - **Description**: A view can be used for a single source of data shared by multiple services.
+   - **Limitation**: Views are read-only and cannot be used for write operations.
+
+      ![33](33.png)
+
+#### **Database Wrapping Service Pattern**:
+   - **Description**: Wrap the database behind a service that acts as a thin layer to abstract database access.
+   - **Use Case**: When clients only need database queries without direct access.
+
+      ![34](34.png)
+
+
+#### **Database-as-a-Service Pattern**:
+   - **Description**: The database is treated as a service that is accessed by microservices as needed.
+   - **Use Case**: This is commonly used when microservices need to query data but shouldn’t handle database management directly.
+
+      ![35](35.png)
+
+
+#### **Physical vs. Logical Database Separation**:
+   - **Strategy**: Split the database either physically (separate databases) or logically (within the same system).
+   - **Challenges**: Managing network latency, ensuring data consistency, and avoiding God classes during decomposition.
+
+      ![36](36.png)
+
+
+---
+
+### 20. **Obstacles to Decomposing Applications Into Services**
+   - **Network Latency**: Communication over the network introduces delays.
+   - **Synchronous Communication Issues**: Services waiting for responses can reduce availability.
+   - **Data Consistency**: Maintaining consistency across distributed services is challenging.
+   - **God Classes**: Large classes that handle too much responsibility, making decomposition harder.
+
+---
+
+### 21. **Defining Service APIs**
+
+#### **Service API Operations**:
+   - **External Operations**: Invoked by external clients or other services.
+   - **Internal Operations**: Exist to support collaboration between services.
+   - **Assigning System Operations to Services**: Operations can be assigned based on the data needed by a service or the information it provides.
+
+---
+
+### 22. **Communication Protocols for Microservices**
+
+#### **Synchronous Communication**:
+   - **Description**: The client sends a request and waits for a response (e.g., REST).
+   - **Example**: FTGO’s `CreateOrder` request follows a synchronous protocol.
+
+      ![37](37.png)
+
+
+#### **Asynchronous Communication**:
+   - **Description**: The sender doesn’t wait for a response. Communication happens in the background.
+   - **Common Implementations**:
+     - **Message Queues**: Messages are queued and processed independently.
+     - **Event-Based Systems**: Services respond to events rather than direct requests.
+
+---
+
+### 23. **REST: Representational State Transfer**
+   - **Description**: A popular software architectural style used for designing networked applications, especially for the web.
+   - **Guiding Principles**:
+     - **Client-Server**: Separates concerns between the client and the server.
+     - **Stateless**: Each request from a client contains all the information needed to process it.
+     - **Cacheable**: Responses should define whether or not they are cacheable.
+     - **Uniform Interface**: Provides a standard method of communication across services.
+     - **Layered System**: Services can be composed into a layered structure.
+
+---
+
+### 24. **gRPC (Google Remote Procedure Call)**
+   - **Introduction**: gRPC is a high-performance RPC framework used to connect services.
+   - **Key Features**:
+     - Supports multiple languages (e.g., Java, Go, Python, Ruby).
+     - Google APIs use gRPC, making it easy to integrate Google services.
+     - Allows the creation of clients and servers across different environments.
+
+      ![38](38.png)
+
+---
+
+#### **Conclusion**
+   - Microservices offer flexibility, scalability, and modularity, making them an excellent choice for modern, large-scale applications.
+   - However, they bring complexity in terms of management, communication, and data duplication, which must be carefully handled.
+   - Both microservices and SOA have their unique strengths, and the choice between them depends on the scope, scale, and specific needs of your application environment.
+   - Microservices offer a highly scalable and resilient architecture, but they also introduce complexity, requiring careful design, testing, and organizational changes. Transitioning from monolithic systems can be challenging but using patterns like the strangler pattern allows incremental migration while maintaining stability.
+   - This presentation provides key patterns for decomposing databases, defining service APIs, and implementing communication strategies within a microservices architecture. The various database and communication patterns (e.g., shared databases, REST, gRPC) are crucial for designing scalable and efficient microservices that ensure both data consistency and independent service operation.
