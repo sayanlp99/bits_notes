@@ -124,7 +124,8 @@
   - **Amazon DynamoDB** as the database
   - **Amazon Cognito** for user management
   - **AWS Amplify Console** for hosting static content
-  ![1](1.png)
+  
+  <img src="1.png" alt="1" width="350px" height="350px">
 
 ---
 ### Layered Pattern
@@ -380,5 +381,371 @@
   - **Flask/Django:** Web frameworks.
   - **SQLAlchemy:** ORM for database management.
   - **Django REST Framework:** For building APIs.
+
+---
+
+### Web Protocols: (HTTP)
+
+#### 1. **Introduction to HTTP**
+- **HTTP (HyperText Transfer Protocol)**: 
+  - A stateless request-response protocol used for distributed and collaborative hypermedia information systems.
+  - Operates in a client-server model.
+  - Each HTTP communication includes:
+    - **Header**: Contains information about the communication.
+    - **Body**: Contains the data of the communication (optional).
+
+#### 2. **HTTP Request-Response Structure**
+- **HTTP Request** consists of:
+  1. Request Line (method, URI, HTTP version).
+  2. Header fields.
+  3. Blank line.
+  4. Message body (optional).
+
+  Example:
+  - `GET /test.html HTTP/1.1`
+  - `POST /index.html HTTP/1.1`
+  
+  <img src="12.png" alt="1" width="400px" height="250px">
+
+- **HTTP Response** structure:
+  1. Status line (HTTP version, status code, reason phrase).
+  2. Response headers.
+  3. Blank line.
+  4. Response body (optional).
+
+  Example status line:
+  - `HTTP/1.1 200 OK`
+  - `HTTP/1.0 404 Not Found`
+  
+  <img src="13.png" alt="1" width="400px" height="400px">
+
+#### 3. **HTTP Methods (Verbs)**
+- **GET**: Fetches a URL without changing the state of the server.
+- **POST**: Submits data to the server and can change the server's state.
+- **PUT**: Replaces a resource at a specified URL.
+- **DELETE**: Deletes the specified resource.
+- **HEAD**: Similar to GET but does not return the response body.
+- **OPTIONS**: Describes communication options for the target resource.
+- **PATCH**: Applies partial modifications to a resource.
+- **TRACE**: Performs a message loop-back test.
+- **CONNECT**: Establishes a tunnel to the server.
+  ![14](14.png)
+
+#### 4. **Common HTTP Status Codes**
+- **1xx**: Informational.
+- **2xx**: Success.
+  - `200 OK`: Request succeeded.
+  - `201 Created`: New resource created.
+  - `204 No Content`: No response body.
+- **3xx**: Redirection.
+  - `301 Moved Permanently`: New URI assigned.
+  - `302 Temporary Redirect`.
+- **4xx**: Client Error.
+  - `400 Bad Request`: Invalid request.
+  - `401 Unauthorized`: Invalid credentials.
+  - `403 Forbidden`: Access denied.
+  - `404 Not Found`: Resource not found.
+- **5xx**: Server Error.
+  - `500 Internal Server Error`: Server encountered a problem.
+
+#### 5. **HTTP Headers**
+- **Request Headers**: Information about the client or request.
+  - `Host`, `Connection`, `Accept`, `User-Agent`.
+- **Response Headers**: Information about the server or the response.
+  - `Content-Type`, `Content-Length`, `Keep-Alive`.
+
+- **Caching Headers**:
+  - **Cache-Control**: Specifies caching mechanisms.
+    - `no-cache`, `no-store`, `public`, `private`.
+  - **Expires**: Sets expiration time for cached responses.
+  - **ETag**: Unique identifier for a specific version of a resource.
+  - **Last-Modified**: Timestamp for the last modification of the resource.
+
+#### 6. **Synchronous vs Asynchronous Communication**
+- **Synchronous**: The client waits for the server to process and return the response.
+- **Asynchronous**: The client continues with other tasks and processes the response later (used in modern web apps with AJAX, Fetch API, etc.).
+
+#### 7. **Communication with Backend**
+- **AJAX (Asynchronous JavaScript and XML)**: A method for sending and retrieving data asynchronously.
+- **Fetch API**: Modern method for making HTTP requests in JavaScript, returning promises.
+- **Webhooks**: Used to send real-time data from one application to another when an event occurs.
+- **Polling**: The client repeatedly checks the server for updates at regular intervals.
+- **Server-Sent Events**: Allows servers to push data to the browser.
+- **WebSockets**: Enables full-duplex communication channels over a single, long-lived connection.
+
+#### 8. **Bidirectional Communication**
+- **WebSockets**: Provides a persistent connection between the client and server, allowing data to be sent in both directions.
+
+#### 9. **Redirection**
+- A **3xx status code** indicates a redirection, with the browser using the new URL provided in the `Location` header.
+  - **Permanent Redirection**: `301 Moved Permanently`.
+  - **Temporary Redirection**: `302 Temporary Redirect`.
+
+#### 10. **HTTP Cookies**
+- **Cookies**: Small pieces of data sent by the server to the client, stored by the browser, and sent back with future requests.
+  - **Set-Cookie**: Header used to store a cookie on the client.
+  - **Cookie**: Header used by the client to send stored cookies to the server.
+
+#### 11. **Security Features**
+- **HTTPS**: Secured version of HTTP using SSL/TLS encryption to protect data transmission between the client and server.
+
+---
+
+### Additional Notes:
+- **AJAX and Fetch**: Key for modern web applications to provide a smooth user experience without page reloads.
+- **WebSockets**: Particularly useful in real-time applications like chat apps or live notifications.
+- **Statelessness in HTTP**: HTTP does not retain information between requests unless explicitly managed using cookies or tokens.
+
+---
+
+### Web Protocols (HTTP, HTTPS, HTTP/2, and QUIC)
+
+---
+
+#### **1. HTTP Connection Management**
+- **Connection Header**: Controls whether the network connection stays open after the current transaction.
+  - `Connection: keep-alive`: Keeps the connection persistent for future requests.
+  - `Connection: close`: Closes the connection after the transaction.
+  
+- **Keep-Alive Header**: Sets a timeout and a maximum number of requests before closing the connection.
+  - Example: `Keep-Alive: timeout=5, max=1000`
+
+---
+
+#### **2. HTTP/1.x**
+- **Drawbacks of HTTP/1.x**:
+  - Clients need multiple connections for concurrent requests.
+  - **Head of Line Blocking**: Only one request is processed at a time.
+  - No compression of request and response headers, causing network congestion.
+  - Poor resource prioritization, leading to inefficient TCP usage.
+  
+  ![15](15.png)
+
+---
+
+#### **3. HTTP/2**
+- **Improvements in HTTP/2**:
+  - **Header Field Compression**: Reduces the size of headers using HPACK compression.
+  - **Multiplexing**: Multiple concurrent exchanges over a single connection, reducing latency.
+  - **Stream Prioritization**: Requests are prioritized, improving resource allocation.
+  - **Binary Protocol**: HTTP/2 uses binary framing, improving message efficiency.
+
+  <img src="16.png" alt="1" width="400px" height="250px">
+  
+- **Structure**:
+  - **Frame**: Smallest unit of communication, which contains headers for stream identification.
+  - **Message**: A sequence of frames representing a complete request or response.
+  - **Stream**: A bidirectional flow of bytes within a single connection, carrying one or more messages.
+  
+- **Benefits**:
+  - Fewer TCP connections improve network capacity.
+  - **Server Push**: Server can push resources proactively into the client cache without waiting for requests.
+  - Reduced round-trip time (RTT), leading to faster page loads.
+
+  <img src="17.png" alt="1" width="500px" height="350px">
+---
+
+#### **4. QUIC (Quick UDP Internet Connections)**
+- **Introduction**:
+  - A new encrypted-by-default transport protocol designed to improve HTTP/2 performance.
+  - Combines TCP and TLS handshakes into a single step.
+  - **UDP-based**: It operates over User Datagram Protocol (UDP).
+  
+- **Benefits**:
+  - Faster connection setup (only a single round trip needed).
+  - Better congestion control and reduced **Head-of-Line blocking**.
+  - Built-in security with encrypted connection metadata.
+  
+  <img src="18.png" alt="1" width="400px" height="250px">
+
+---
+
+#### **5. HTTP Versions**
+
+  <img src="19.png" alt="1" width="400px" height="250px">
+
+---
+
+#### **6. HTTPS (HyperText Transfer Protocol Secure)**
+- **Overview**:
+  - HTTPS is the secure version of HTTP, used to encrypt communication between a client (browser) and a server.
+  - **Port 443**: Default port for HTTPS.
+  - Protects requests from being intercepted or modified by using encryption.
+
+- **TLS Handshake**:
+  - Establishes a secure connection between client and server.
+  - Agrees on the protocol version and cryptographic algorithms.
+  - Both parties authenticate each other via digital certificates.
+  - **Symmetric Encryption**: Used for faster encryption once the handshake is complete.
+
+  <img src="20.png" alt="1" width="400px" height="450px">
+  <img src="21.png" alt="1" width="400px" height="350px">
+
+---
+
+#### **7. Digital Certificates and Certificate Authority (CA)**
+- **Certificates**:
+  - The server sends a public key certificate (SSL/TLS certificate) to the client to validate its identity.
+  - A **Certificate Authority (CA)** issues these certificates, ensuring trust between the client and server.
+
+---
+
+### **Summary of Key Points**:
+1. **HTTP Connection Management**: Keep-Alive for persistent connections.
+2. **HTTP/1.x**: Limitations such as head-of-line blocking and inefficient resource use.
+3. **HTTP/2**: Binary protocol with features like multiplexing and server push for better performance.
+4. **QUIC**: A faster, more secure, UDP-based protocol with reduced handshake time and improved congestion control.
+5. **HTTPS**: Encrypts data transmission using the TLS protocol, secured by digital certificates.
+
+---
+### Web Protocols (Module 3)
+
+---
+
+### **1. Introduction to Web Protocols**
+- **Web Protocols** are essential for client-server communication on the internet.
+- This module covers important web protocols such as HTTP, HTTP methods, headers, connection management, and communication between frontend and backend.
+
+---
+
+### **2. HTTP (HyperText Transfer Protocol)**
+- **HTTP Request-Response Model**:
+  - HTTP is a unidirectional protocol where the client (browser) initiates requests, and the server responds.
+  - Request and response both have headers and body sections.
+  
+- **Request Structure**:
+  - Method (GET, POST, etc.), URL, HTTP version.
+  - Headers: Name-value pairs providing additional context (e.g., `Content-Type`, `Authorization`).
+  - Body (optional): Data sent with the request (for POST, PUT).
+
+- **Response Structure**:
+  - Status line (HTTP version, status code, reason phrase).
+  - Headers: Provide metadata about the response (e.g., `Content-Length`, `Content-Type`).
+  - Body: The resource or data being returned.
+
+---
+
+### **3. HTTP Methods**
+- **GET**: Retrieves data from the server.
+- **POST**: Submits data to the server, often changing its state.
+- **PUT**: Replaces all current data at the target URL.
+- **DELETE**: Deletes the specified resource.
+- **PATCH**: Partially modifies a resource.
+- **OPTIONS**: Describes communication options for the resource.
+  
+---
+
+### **4. Fetch API & Axios**
+- **Fetch API**:
+  - A modern interface for making HTTP requests from the client.
+  - Uses the `fetch()` method, which returns a Promise.
+  - Can be configured to handle different HTTP methods and headers.
+  
+- **Axios**:
+  - A popular JavaScript library for making HTTP requests.
+  - More user-friendly than Fetch, with built-in JSON parsing.
+  - Can be used for both browser-based and Node.js HTTP requests.
+
+**Key Differences**:
+- Fetch API is built-in and doesn't require external dependencies.
+- Axios needs to be installed but simplifies handling and transformations (e.g., JSON data).
+
+![22](22.png)
+
+---
+
+### **5. Synchronous vs Asynchronous Communication**
+- **Synchronous Communication**: The client waits for the server to finish processing before proceeding (e.g., typical form submissions).
+- **Asynchronous Communication**: The client can continue executing other tasks while waiting for the server response (e.g., AJAX).
+
+![23](23.png)
+
+---
+
+### **6. Long-Running Transactions**
+- If a server task exceeds a typical request timeout, it often returns a **202 Accepted** response, indicating that the request is still being processed.
+- Common techniques to handle long-running tasks:
+  - **Polling**: The client checks the server at regular intervals for updates.
+  - **Webhooks**: Server sends a notification to the client when the task is complete.
+  - **Server-Sent Events (SSE)**: Server pushes updates to the client.
+  - **WebSockets**: Full-duplex communication between client and server.
+
+---
+
+### **7. Communication Techniques**
+- **HTTP Polling**:
+  - The client makes repeated requests at set intervals, waiting for a server response.
+  - Servers return either the requested resource or an empty response.
+  - **Headers**: 
+    - `Location`: The URL the client should poll.
+    - `Retry-After`: Informs the client when to poll again.
+  
+  ![24](24.png)
+
+- **Webhooks**:
+  - Event-driven, HTTP-based callbacks.
+  - The server sends data to the client only when an event occurs (no need for the client to poll).
+  - Uses HTTP POST to send a payload to the client's webhook URL.
+
+  ![25](25.png)
+
+- **Server-Sent Events (SSE)**:
+  - A unidirectional channel where the server sends real-time updates to the client.
+  - The client connects using the **EventSource** API and listens for messages.
+  - Common in live dashboards, notifications, or live feeds.
+
+- **WebSockets**:
+  - Provides bidirectional communication over a single TCP connection.
+  - Allows real-time, full-duplex communication, ideal for chat applications, gaming, etc.
+  - Uses a handshake protocol to upgrade from HTTP to WebSockets (via headers like `Upgrade` and `Sec-WebSocket-Key`).
+
+  ![26](26.png)
+
+---
+
+### **8. Summary of Communication Methods**
+- **Polling**: Client initiates repeated requests.
+- **Webhooks**: Server initiates communication after an event.
+- **SSE**: Server sends updates over a single HTTP connection.
+- **WebSockets**: Real-time, bidirectional communication over a persistent connection.
+
+---
+
+### Client-Side and Server-Side in Web Communication
+
+#### **Client-Side**
+- **Definition**: The client-side refers to operations that are performed by the user’s device (browser, mobile app) when interacting with a server. 
+- **Key Characteristics**:
+  - The **client-side application** (e.g., frontend like React JS or AngularJS) sends requests to the server via HTTP protocols.
+  - The **client-side** often cannot directly implement advanced techniques like Webhooks because they require a server to handle incoming HTTP POST requests.
+  - **Pure frontend applications** (like React, Angular) cannot directly receive webhooks; instead, webhooks need a backend server to listen for events from the server.
+  
+- **Usage**:
+  - Client-side applications make HTTP requests using **Fetch API** or **Axios** to retrieve data from the server or interact with APIs.
+  - These client-side apps rely on server-side APIs to receive data asynchronously or synchronously.
+
+#### **Server-Side**
+- **Definition**: The server-side refers to operations carried out by the server in response to requests from the client. It includes handling business logic, database interactions, and providing resources back to the client.
+  
+- **Key Characteristics**:
+  - The **server-side** runs server-based logic, processes requests, and sends responses to the client.
+  - For communication like Webhooks, the server is responsible for receiving HTTP POST requests that are triggered by events from other systems.
+  
+- **Webhooks**:
+  - In Webhooks, the **server-side** application sets up a URL (a webhook) that receives the POST request from another system when an event occurs.
+  - When the event happens (e.g., a payment being completed), the event information is sent to the **server-side** webhook.
+  
+- **Full-Duplex Communication**:
+  - **WebSockets**: The server and client engage in bidirectional communication over a persistent connection. 
+  - The **server-side** handles real-time updates and pushes them to the client.
+
+---
+
+### **Use Cases**
+- **Fetch API & Axios**: Ideal for making HTTP requests in client-server applications, such as fetching data or submitting forms.
+- **Polling**: Useful when there is no other way for the client to be informed of a change.
+- **Webhooks**: Best for applications needing notifications on specific events (e.g., payments, status changes).
+- **SSE**: Great for live dashboards, news feeds, and live sports scores.
+- **WebSockets**: Suited for real-time applications like chats, gaming, and live collaboration tools.
 
 ---
