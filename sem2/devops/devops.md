@@ -777,6 +777,8 @@ The `git reset` command is used to undo changes in Git repositories. It can oper
 - **Integration Pipeline**:
   - After individual components are built and tested, they feed into an integration pipeline where the entire system is assembled and tested.
 
+    ![9](9.png)
+
 #### **Visualizing Dependencies**
 - **Upstream Dependencies**: Shows what components your code relies on.
 - **Downstream Dependencies**: Shows which components depend on your code.
@@ -1217,6 +1219,8 @@ Selenium Grid allows for parallel and distributed test execution, improving test
      4. Archiving: Build artifacts are stored for later use.
      5. Deployment: The built project is deployed for further testing or use.
 
+      ![10](10.png)
+
 ---
 
 ### **Benefits of CI:**
@@ -1267,15 +1271,19 @@ Selenium Grid allows for parallel and distributed test execution, improving test
    - **Testing and QA**: Ensures that the code meets quality standards through rigorous testing.
    - **Deployment**: Manages the process of delivering the application to production environments.
    - **Visibility**: Ensures that the team has access to the build results and can track progress effectively.
+  
+      ![11](11.png)
 
 ---
 
-### Continuous Delivery**
+### **Continuous Delivery**
 
 ---
 
 ### **Introduction to Continuous Delivery (CD)**
 Continuous Delivery is the practice of building software that is always ready to be deployed into production. The key focus is on automating every step from code development to deployment, reducing the cycle time for delivery, and enhancing the reliability of the release process.
+
+![12](12.png)
 
 ---
 
@@ -1347,7 +1355,9 @@ A CI server can:
   1. **Reproducible build**: Building in a production-like environment eliminates the "works on my machine" issue.
   2. **Testing**: Automated tests (unit, integration, acceptance) reduce risks and increase confidence.
   3. **Deployment**: Automate deployment to all environments (Dev, QA, Pre-prod, and Production).
-  
+
+      ![13](13.png)
+
 ---
 
 ### **Automation in DevOps**
@@ -1434,10 +1444,14 @@ Jenkins is a popular open-source tool for automating the Continuous Integration 
 - **Deployment Automation**: Jenkins can automatically deploy builds to various environments (Dev, QA, Prod).
 - **Plugin Support**: Jenkins is supported by over 400 plugins for tasks like SCM (Git, SVN), testing, notifications, and reporting.
 
+![14](14.png)
+
 #### **Why Jenkins?**
 - **Highly Configurable**: Jenkins is highly flexible and can be customized to fit into a variety of workflows and environments.
 - **Community Plugins**: The community offers a wide range of plugins for various integrations.
 - **Integration with Build Automation Tools**: It can be combined with **Ant**, **Gradle**, and other build automation tools, extending its capabilities.
+
+![15](15.png)
 
 ---
 
@@ -1495,6 +1509,8 @@ When setting up a project in Jenkins, developers have several options:
 - **Artifact Archiving**: Jenkins stores artifacts like logs, JUnit results, and Javadocs.
 - **Email Notifications**: Automatically sends email notifications based on build status.
 
+![17](17.png)
+
 ---
 
 ### **Enhancing Jenkins**
@@ -1531,6 +1547,8 @@ Jenkins provides two release lines:
 
 ### **Tying Jenkins into Agile Development**
 For Agile teams, Jenkins supports continuous integration and delivery by providing access to working versions of software throughout the development process.
+
+![16](16.png)
 
 #### **Agile Principles**:
 - Continuous delivery of working software.
