@@ -429,7 +429,8 @@
 - **PATCH**: Applies partial modifications to a resource.
 - **TRACE**: Performs a message loop-back test.
 - **CONNECT**: Establishes a tunnel to the server.
-  ![14](14.png)
+  
+    ![14](14.png)
 
 #### 4. **Common HTTP Status Codes**
 - **1xx**: Informational.
