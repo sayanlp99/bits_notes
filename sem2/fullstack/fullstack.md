@@ -750,3 +750,312 @@
 - **WebSockets**: Suited for real-time applications like chats, gaming, and live collaboration tools.
 
 ---
+
+## REST (Representational State Transfer)
+
+### 1. **Introduction to REST**
+   - **Definition**: REST stands for Representational State Transfer. It is an **architectural style** for distributed hypermedia systems like the web.
+   - **RESTful Web Services**: These expose information about resources (like docs, data, images, etc.) and allow the client to perform CRUD operations (Create, Read, Update, Delete) on them.
+
+### 2. **Key REST Concepts**
+   - **Resource**: Anything that can be uniquely identified and acted upon, such as a document, image, or data. Each resource has a unique identifier (URI).
+   - **Representation**: The state of a resource returned to the client, usually in **JSON**, **XML**, or **HTML** formats.
+   - **Example**: Fetching a specific Instagram user via their API will return details like name, post count, follower count, etc.
+
+### 3. **Resources in REST**
+   - **Main Building Blocks**: Resources and their representations (in formats like binary, JSON, XML).
+   - **Identifiers**: Unique URIs used to retrieve specific resources.
+   - **Metadata**: Information like content type and last modified time.
+   - **Control Data**: Includes cache-control, is-modifiable-since headers, etc.
+
+### 4. **REST and HTTP**
+   - REST leverages **HTTP methods** to operate on resources:
+     - **GET**: Retrieve a resource.
+     - **POST**: Create a new resource.
+     - **PUT**: Update an existing resource.
+     - **PATCH**: Modify an existing resource.
+     - **DELETE**: Remove a resource.
+   - Other methods:
+     - **HEAD**: Retrieve headers.
+     - **OPTIONS**: Request allowed communication options for a URL.
+
+### 5. **How REST Works**
+   - **URL** (Uniform Resource Locator) identifies resources.
+   - **HTTP Methods** define actions to perform on resources.
+   - The client sends a request, and the server returns the state of the resource.
+
+### 6. **HTTP Request Examples**
+   - **GET Request**: Example of requesting `http://www.oreilly.com/index.html`, where the server returns the page with status code, headers, and content.
+
+      ![27](27.png)
+
+   - **SOAP vs REST**: 
+     - SOAP: Uses XML-based messaging.
+     - REST: Uses HTTP and is more lightweight and flexible.
+
+      ![28](28.png)
+
+   - **XML-RPC**: XML-based remote procedure call, an alternative to REST and SOAP.
+
+      ![34](34.png)
+
+### 7. **Scoping and Method Information**
+   - **Scoping**: Identifying the specific resource or subset to operate on, often via URI path or query parameters.
+   - **Method and Scoping**: RESTful services map the method to HTTP verbs and scoping to URIs.
+
+### 8. **Key Principles of REST**
+   - **Everything is a resource**: Every resource is uniquely identified via URIs.
+   - **Use of standard HTTP methods**: Such as GET, POST, PUT, DELETE.
+   - **Multiple representations**: Resources can have various representations like JSON, XML.
+   - **Stateless communication**: Each request is independent, and the server does not retain any client information between requests.
+
+### 9. **REST Constraints**
+   To be RESTful, services must adhere to these six constraints:
+   - **Client-Server Separation**: Server and client interact only via requests/responses, and are independent.
+   - **Stateless**: The server does not remember the client’s state between requests.
+   - **Cacheable**: Clients can cache responses for efficiency.
+   - **Uniform Interface**: A consistent interface across the web with self-descriptive messages.
+   - **Layered System**: Clients don’t need to know if intermediaries (e.g., caching, security) exist between them and the server.
+   - **Code-on-Demand (Optional)**: Clients can request executable code from servers.
+
+### 10. **Detailed REST Constraints**
+   - **Client-Server Separation**:
+     - The client initiates requests, and the server only responds to these requests.
+   - **Stateless**:
+     - The server does not store any session information; each request is self-contained.
+     - Improves scalability and reliability.
+   - **Cacheable**:
+     - Responses include metadata (e.g., version numbers, expiration times) to inform clients whether the data can be cached.
+     - Helps avoid redundant requests.
+   - **Uniform Interface**:
+     - Ensures that the API is simple and consistent.
+     - Principles:
+       1. **Identification of Resources**: Resources identified via URIs.
+       2. **Manipulation of Resources**: Resources are manipulated via representations in requests.
+       3. **Self-Descriptive Messages**: Each request and response contains enough information for both client and server to understand it.
+       4. **HATEOAS (Hypermedia as the Engine of Application State)**: Hypermedia links in responses guide clients on how to proceed with further actions.
+
+### 11. **HATEOAS**
+   - **Hypermedia as the Engine of Application State**: Clients receive links to perform actions on resources in responses, allowing them to navigate the system dynamically.
+
+      ![29](29.png)
+
+### 12. **Layered System**
+   - REST allows for intermediary layers (e.g., security, caching) between the client and server.
+   - Clients are unaware of these layers, and these layers should not affect the response or request.
+
+### 13. **Code on Demand (Optional)**
+   - Though optional, the server can send executable code (like JavaScript) that the client can execute, adding additional flexibility.
+
+### 14. **REST Maturity Model**
+   - A model used to evaluate the maturity of a REST service based on:
+     - **URI** usage.
+     - **HTTP Methods**.
+     - **HATEOAS** implementation.
+
+      ![30](30.png)
+
+### 15. **Conclusion**
+   - REST is a stateless, cacheable, and scalable architecture that relies on standard HTTP methods and URIs to operate on resources.
+   - Adherence to its constraints ensures flexibility, scalability, and simplicity, making it a popular choice for web services.
+
+---
+
+### Additional Information for Better Understanding:
+1. **Idempotency**: 
+   - In REST, certain operations (like GET, PUT, DELETE) are idempotent, meaning calling the same method multiple times results in the same state.
+   - **POST** is not idempotent, as it may create multiple resources with repeated calls.
+
+2. **REST vs SOAP**:
+   - **REST** is lightweight, stateless, and uses JSON/XML. It is well-suited for web-based APIs.
+   - **SOAP** is more rigid, requires XML, and is used in enterprise applications requiring strict contracts and advanced security.
+
+3. **Content Negotiation**:
+   - REST allows clients and servers to negotiate the format of the response (e.g., JSON, XML) through HTTP headers like `Accept`.
+
+4. **Versioning**:
+   - REST APIs often support versioning via URI paths (e.g., `/v1/users`), query parameters, or headers.
+
+---
+
+### **REST Design**
+
+---
+
+### **1. Agenda: Key Topics Covered**
+
+- Interaction Design with HTTP (response codes, request methods)
+- Identifier Design with URIs
+- Metadata Design (Media Types, content negotiation)
+- Representation Design (Message body format, Hypermedia Representation)
+
+---
+
+### **2. REST API Design**
+
+REST API design is considered an art, with many practices implied by the HTTP standard. Key concerns in REST design:
+- **Resource Naming**: Should URI path segments use singular or plural nouns?
+- **Methods**: Which HTTP method should be used for different resource states?
+- **Non-CRUD operations**: Mapping these to URIs.
+- **Versioning**: Managing different versions of resources.
+- **Hyperlinks in JSON**: How to structure these links.
+
+### **3. API Design**
+
+- **Resources**: Core elements around which REST APIs are designed.
+  - A resource could be any object, data, or service accessible to the client.
+- **Identifiers**: Each resource has a unique identifier (URI).
+  - URIs should be based on **nouns** (resources), not **verbs** (actions on the resource).
+
+#### **API Design Elements:**
+- **Resource Representation**: How resources and their relations are represented.
+- **HTTP Headers**: Standard and custom headers for requests and responses.
+- **URI Structure**: Query interfaces for resource location and interaction.
+- **Client Behaviors**: Handling retries, DNS caching, etc.
+
+---
+
+### **4. Interaction Design with HTTP**
+
+REST APIs follow the **HyperText Transfer Protocol (HTTP)** model, embracing its request methods, response codes, and headers.
+
+- **HTTP Methods**:
+  - **GET**: Retrieve a resource's state.
+  - **HEAD**: Retrieve metadata of a resource.
+  - **PUT**: Add or update a resource.
+  - **POST**: Create new resources or execute controllers.
+  - **DELETE**: Remove a resource.
+
+**Design Rules:**
+- **GET**: Must be used to retrieve data, not to tunnel other methods.
+- **POST**: Create resources or execute commands.
+- **PUT**: Insert or update stored resources.
+- **DELETE**: Remove resources.
+- **OPTIONS**: Retrieve metadata on resource interactions.
+
+#### **HTTP Response Codes:**
+- **200 OK**: Generic success.
+- **201 Created**: A new resource has been created.
+- **204 No Content**: The response is empty but successful.
+- **301 Moved Permanently**: Resource has a new permanent URI.
+- **401 Unauthorized**: Authentication failure.
+- **403 Forbidden**: Denied access.
+- **404 Not Found**: Resource not found.
+- **405 Method Not Allowed**: Invalid HTTP method for the request.
+- **500 Internal Server Error**: Server-side error.
+
+---
+
+### **5. Identifier Design**
+
+REST APIs rely on **Uniform Resource Identifiers (URIs)** to locate resources.
+
+#### **URI Format**:
+`URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]`
+
+- Use forward slashes (/) to show hierarchical relationships between resources.
+- Consistent subdomain names should be used across APIs.
+
+#### **Resource Modeling**:
+- **Paths** represent resources.
+- Example URIs:
+  - `/books/harry-potter`: Specific book.
+  - `/books`: A collection of books.
+
+#### **URI Design Rules**:
+- **Singular Nouns** for documents.
+- **Plural Nouns** for collections.
+- **Verbs** for controllers.
+
+    ![32](32.png)
+
+#### **Antipatterns** to Avoid:
+- Avoid CRUD function names in URIs (e.g., `/getUser` or `/deleteUser`).
+
+  ![31](31.png)
+
+#### **Filtering and Pagination**:
+- Use query parameters to filter or paginate collections.
+  - Example: `/orders?limit=25&offset=50`.
+
+---
+
+### **6. Metadata Design**
+
+HTTP headers play a significant role in communication. Important headers include:
+- **Content-Type**: Defines the media type of the resource (e.g., JSON, XML).
+- **Content-Length**: Size of the response body.
+- **Last-Modified**: Timestamp of the last modification.
+- **E-tag**: Unique identifier for resource versions.
+- **Location**: URI of newly created resources.
+
+    ![33](33.png)
+
+#### **Content Negotiation**:
+When multiple representations of a resource are available, the API should support media type negotiation.
+
+---
+
+### **7. Representation Design**
+
+The representation is the data format returned to the client. Common formats:
+- **JSON** (preferred for REST APIs).
+- **XML** or other formats as needed.
+
+Representations should be:
+- **Consistent**: Media types, links, and errors should follow a standard format.
+- **Flexible**: To cater to varying application use cases.
+
+**Example (JSON representation of a person)**:
+```json
+{
+  "name": "John",
+  "id": "urn:example:user:1234",
+  "link": {
+    "rel": "self",
+    "href": "http://www.example.org/person/john"
+  }
+}
+```
+
+---
+
+### **8. Best Practices**
+
+- **Nouns over Verbs**: Use only nouns in URIs.
+- **GET should be safe**: Must not alter resource state.
+- **Plural nouns for collections**.
+- **Use sub-resources** for resource relationships (e.g., `/books/1/authors`).
+- **Use HTTP headers** for input/output formats.
+- **Provide Pagination and Filtering** for large collections.
+- **Versioning**: Include versioning in the API design.
+- **Meaningful HTTP Status Codes**: Use proper response codes to convey the result of a request.
+
+#### **Error Handling**:
+Provide meaningful errors:
+- Example: `invalid_auth` for revoked tokens.
+- Example: `name_too_long` for invalid name inputs.
+
+---
+
+### **9. RESTful Services Example: Customer API**
+
+| HTTP Verb | CRUD Operation | Entire Collection (`/customers`) | Specific Item (`/customers/{id}`) |
+|-----------|----------------|----------------------------------|-----------------------------------|
+| POST      | Create          | `201 Created`                   | `404 Not Found` or `409 Conflict` |
+| GET       | Read            | `200 OK` (with pagination)       | `200 OK` or `404 Not Found`       |
+| PUT       | Update/Replace  | `405 Method Not Allowed`         | `200 OK` or `204 No Content`      |
+| PATCH     | Update/Modify   | `405 Method Not Allowed`         | `200 OK` or `204 No Content`      |
+| DELETE    | Delete          | `405 Method Not Allowed`         | `200 OK` or `404 Not Found`       |
+
+---
+
+### **10. Summary**
+
+- Focus on **simplicity** in API design.
+- Use **consistent naming conventions** and **clear resource modeling**.
+- Follow **HTTP standards** for methods, status codes, and headers.
+- Provide **well-defined resource representations** for ease of use and flexibility.
+- Ensure **meaningful error messages** to enhance client-side experience.
+
+---
