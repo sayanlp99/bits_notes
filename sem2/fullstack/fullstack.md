@@ -1059,3 +1059,399 @@ Provide meaningful errors:
 - Ensure **meaningful error messages** to enhance client-side experience.
 
 ---
+
+### Full Stack Application Development: API Documentation and Versioning
+
+This summary covers the **core topics** of REST design, API versioning, change management, semantic versioning, and documentation, along with **key practices** for designing scalable, efficient, and versionable APIs.
+
+---
+
+#### 1. REST Design Principles
+REST (Representational State Transfer) leverages HTTP protocols to build scalable and flexible APIs. Here’s how to approach RESTful API design:
+
+- **Resource Identification**: REST APIs are structured around resources, usually modeled after the main entities in a database (e.g., user profiles, orders). Use domain nouns that align with CRUD operations (Create, Read, Update, Delete).
+  
+- **Resource Actions**: While the CRUD model is a foundation, it may not always fully cover specific use cases. For instance, replacing a photo or listing the latest photos uploaded by a user might not map directly to CRUD but would instead represent more complex actions.
+
+- **Collections and Resources**:
+  - **Collections** (e.g., `/photos`) group resources under a shared context, while **items** represent individual resources (e.g., `/photos/1`).
+  - **HATEOAS (Hypermedia As The Engine of Application State)**: Enables easier navigation between related resources. Use URIs such as `/orders/99/products` to retrieve all products in an order, reducing endpoint complexity.
+
+- **Avoid Database Mirroring**: Design APIs to present resources logically for users rather than mimicking the database’s internal structure.
+
+---
+
+#### 2. API Versioning
+
+APIs need versioning to accommodate changes while maintaining backward compatibility. Breaking changes usually occur in four categories:
+
+1. **Format Changes**: e.g., changing from XML to JSON.
+2. **Property Changes**: e.g., renaming or changing the data type.
+3. **Required Fields**: Adding a required field in requests.
+4. **Removing Properties**: Deleting fields from responses can affect existing client implementations.
+
+##### API Versioning Strategies
+
+Several approaches can be used for versioning:
+
+- **URI Path Versioning**: Embeds the version directly in the URL (e.g., `https://api.example.com/v1/resource`). Useful for major, incompatible changes.
+- **Query Parameters**: Appends the version to the query string (e.g., `?version=v2`). Suitable for maintaining backward compatibility.
+- **Custom Headers**: Uses HTTP headers to specify the version (e.g., `api-version: 1`). Keeps URLs clean but adds complexity to API requests.
+- **Content Negotiation**: Uses MIME types in headers (e.g., `Accept: application/vnd.example.v1+json`). Often used in complex systems with many endpoints.
+
+---
+
+#### 3. API Change Management
+
+Effective API change management minimizes disruption for clients by balancing innovation with stability:
+
+- **Non-breaking Changes**: Add new features or fields rather than modifying existing ones, allowing old clients to continue without disruption.
+- **Sunsetting Deprecated Endpoints**: Gradually remove outdated endpoints with clear deprecation notices, giving clients time to adapt.
+
+Change scope can be categorized as follows:
+
+- **Leaf**: Minor change affecting an isolated endpoint.
+- **Branch**: Changes impacting a group of related endpoints.
+- **Trunk**: Significant changes across the application, often prompting a version update for all endpoints.
+- **Root**: Structural changes affecting all API resources.
+
+---
+
+#### 4. Semantic Versioning
+
+Semantic Versioning follows a standardized numbering system for version control. Typical format is `MAJOR.MINOR.PATCH`:
+
+- **MAJOR**: For backward-incompatible changes (e.g., adding a new required parameter).
+- **MINOR**: For backward-compatible new features (e.g., additional endpoints).
+- **PATCH**: For backward-compatible bug fixes.
+
+For APIs, semantic versioning often uses a simplified `BREAKING.NONBREAKING` format, focusing on the distinction between disruptive and non-disruptive changes.
+
+---
+
+#### 5. API Documentation
+
+Comprehensive API documentation guides developers on how to integrate and use the API effectively. Popular documentation frameworks include:
+
+- **OpenAPI/Swagger**: A widely-used, standardized format that documents available endpoints, operations, and parameters.
+  - **Features**: Supports YAML/JSON, details endpoint parameters, HTTP methods, and authentication methods.
+  - **Tools**: Swagger UI offers an interactive interface to test API calls, helping teams visualize and test endpoints.
+
+- **Other Formats**:
+  - **API Blueprint**: Markdown-based format that generates API documentation, useful for teams working on simpler documentation.
+  - **RAML (RESTful API Modeling Language)**: Originally developed by MuleSoft, now maintained by Salesforce, also provides a structured way to document RESTful APIs.
+
+---
+
+### Summary
+
+API design and management involve carefully structuring resources, managing changes without disrupting client applications, and documenting the endpoints for ease of use. Adopting best practices in REST design, versioning strategies, and documentation frameworks like OpenAPI or Swagger can greatly enhance the usability and maintainability of an API.
+
+### Full Stack Application Development: gRPC
+
+This summary explains **gRPC’s role, structure, communication patterns**, and **implementation details** for building efficient and high-performance APIs.
+
+---
+
+#### 1. Introduction to gRPC
+gRPC (Google Remote Procedure Call) is an open-source RPC framework developed by Google in 2015. It allows **inter-process communication** across distributed, heterogeneous applications, aiming to make remote communication as simple as invoking local functions.
+
+- **Dynamic Naming**: Google frequently changes the meaning of the "g" in gRPC (e.g., Google, Good, Great), emphasizing gRPC's versatility.
+  
+---
+
+#### 2. gRPC Architecture
+
+gRPC relies on **Protocol Buffers (protobuf)**, Google’s language-agnostic data serialization format, for defining services and exchanging messages between client and server.
+
+- **Service Definition**:
+  - A **service** is defined in a `.proto` file, specifying the interface methods and data types for client-server communication.
+  - Protobuf defines **messages** as structured data records containing fields (name-value pairs).
+
+- **Code Generation**:
+  - The `.proto` file is compiled using `protoc` (protocol buffer compiler), generating client and server code for any supported language.
+  - This generated code provides a **server skeleton** on the server side and a **client stub** on the client side.
+
+- **Client-Server Communication**:
+  - **Server**: Implements service logic and runs a gRPC server that listens for and responds to client requests.
+  - **Client**: Uses the client stub to invoke the server’s methods, with the stub handling network calls to the server.
+
+---
+
+#### 3. Protocol Buffers (protobuf)
+
+Protocol Buffers serve as both the **interface definition language (IDL)** and **message format** in gRPC. Here’s how protobuf structures data:
+
+- **Message Definition**: A message is defined with fields assigned unique identifiers (tags) used to encode data.
+  - Example:
+    ```protobuf
+    message Person {
+      string name = 1;
+      int id = 2;
+      string description = 3;
+    }
+    ```
+  
+- **Service Definition Example**:
+  - Service methods are defined in `.proto` files, specifying parameters and return types using protobuf messages.
+    ```protobuf
+    service ProductInfo {
+      rpc addProduct(Product) returns (ProductID);
+      rpc getProduct(ProductID) returns (Product);
+    }
+    ```
+
+---
+
+#### 4. gRPC Communication Patterns
+
+gRPC supports four key communication patterns that provide flexibility for different use cases:
+
+1. **Unary RPC (Simple RPC)**:
+   - The client sends a single request, and the server sends a single response.
+   - Example:
+     ```protobuf
+     rpc getOrder(google.protobuf.StringValue) returns (Order);
+     ```
+
+2. **Server-Streaming RPC**:
+   - The server sends a stream of responses after receiving a single request from the client.
+   - Example:
+     ```protobuf
+     rpc searchOrders(google.protobuf.StringValue) returns (stream Order);
+     ```
+
+3. **Client-Streaming RPC**:
+   - The client sends multiple messages, and the server responds once all messages are received.
+   - Example:
+     ```protobuf
+     rpc updateOrders(stream Order) returns (google.protobuf.StringValue);
+     ```
+
+4. **Bidirectional Streaming RPC**:
+   - Both client and server send streams of messages, enabling a two-way conversation.
+   - Example:
+     ```protobuf
+     rpc processOrders(stream google.protobuf.StringValue) returns (stream CombinedShipment);
+     ```
+
+---
+
+#### 5. gRPC Features and Benefits
+
+gRPC is designed for high efficiency and strong typing:
+
+- **Protocol Buffers on HTTP/2**: By using protobuf and HTTP/2, gRPC achieves high performance, including support for **multiplexing** (sending multiple requests over a single connection) and **full-duplex streaming**.
+- **Contract-First Approach**: gRPC uses a well-defined interface and schema, enabling consistency in communication between services.
+- **Cross-Language Compatibility**: gRPC supports multiple languages, making it suitable for polyglot environments.
+- **Built-in Commodity Features**: Includes features such as **duplex streaming**, **load balancing**, **circuit breaking**, and **retries**.
+
+---
+
+#### 6. Real-World Use Cases
+
+gRPC is widely adopted in high-demand scenarios:
+
+- **Netflix** uses gRPC to boost productivity and streamline communication between services.
+- **Etcd** leverages gRPC for its user-facing API.
+- **Dropbox** migrated to gRPC to improve performance.
+
+---
+
+#### 7. Message Encoding
+
+Protocol Buffers encode messages using a **tag-value** system optimized for efficient serialization:
+
+- **Wire Types**: Each protobuf field has an associated **wire type** (e.g., integer, 64-bit fixed, length-delimited) that defines how data is serialized.
+- **Length-Prefixed Framing**: gRPC uses a technique called length-prefixed framing, where each message starts with a prefix indicating its length.
+
+---
+
+#### 8. gRPC over HTTP/2
+
+gRPC uses HTTP/2 for **high-performance** message transport:
+
+- **Connection Management**: A gRPC channel represents an HTTP/2 connection to the endpoint, allowing efficient message exchange with multiplexing and flow control.
+- **Message Frames**: gRPC messages are split into frames, making it possible to send large messages as a sequence of frames.
+
+---
+
+#### 9. Limitations of gRPC
+
+While powerful, gRPC has limitations:
+
+- **Not Ideal for Public APIs**: gRPC is often better suited for internal microservices as it may not fit the REST model expected by many public-facing APIs.
+- **Complex Service Definition Changes**: Major changes to service definitions can be challenging.
+- **Evolving Ecosystem**: gRPC tools and community are still growing, and best practices continue to evolve.
+
+---
+
+### Summary
+
+gRPC offers a modern, efficient framework for building high-performance, strongly-typed, and scalable microservices. With protocol buffers, HTTP/2, and support for multiple communication patterns, it has become a popular choice for internal communication in distributed systems. However, understanding its limitations and carefully planning schema changes are crucial for effective use.
+
+### Full Stack Application Development: GraphQL
+
+This summary delves into **GraphQL’s structure, operations, schemas, types, and resolvers**—highlighting its advantages over REST and its practical implementation in modern APIs.
+
+---
+
+#### 1. Introduction to GraphQL
+
+GraphQL is a **query language** and **runtime** for APIs, enabling clients to specify the data they need precisely, avoiding overfetching or underfetching.
+
+- **Single Endpoint**: GraphQL typically operates over a single HTTP endpoint, representing the full set of service capabilities, usually responding in JSON.
+- **Operations**: GraphQL supports three types of operations:
+  - **Query**: To read data.
+  - **Mutation**: To modify data on the server.
+  - **Subscription**: For continuous data updates.
+
+---
+
+#### 2. Drawbacks of REST and GraphQL’s Advantages
+
+REST APIs often struggle with:
+
+- **Overfetching**: Clients receive more data than necessary.
+- **Underfetching**: Clients receive insufficient data, necessitating additional requests.
+- **Lack of Flexibility**: Changing client requirements often force REST APIs to add new endpoints or modify existing ones.
+
+GraphQL solves these issues by allowing clients to request exactly what they need, making the API highly flexible and adaptable.
+
+---
+
+#### 3. GraphQL Queries
+
+GraphQL queries allow clients to fetch deeply nested and related data with a single request, enhancing efficiency. Here’s a sample query and response:
+
+```graphql
+query {
+  posts {
+    title
+    author {
+      name
+      email
+    }
+  }
+}
+```
+
+**Response**:
+```json
+{
+  "data": {
+    "posts": [
+      {
+        "title": "Introduction to GraphQL",
+        "author": {
+          "name": "John Doe",
+          "email": "john.doe@example.com"
+        }
+      }
+    ]
+  }
+}
+```
+
+---
+
+#### 4. Query Arguments and Variables
+
+Queries in GraphQL can accept arguments, making them dynamic:
+
+- **Arguments**: Define parameters for fields and objects.
+- **Variables**: Allow dynamic values in queries, declared using `$` (e.g., `$personid`) and passed in a dictionary.
+  
+Example:
+```graphql
+query ($personid: String!) {
+  human(id: $personid) {
+    name
+    height(unit: FOOT)
+  }
+}
+```
+
+---
+
+#### 5. Mutations
+
+**Mutations** in GraphQL modify server-side data and are defined similarly to queries. The `Mutation` type acts as a root for all write operations.
+
+Example:
+```graphql
+mutation {
+  addUser(name: "Alice", age: 30) {
+    id
+    name
+    age
+  }
+}
+```
+
+---
+
+#### 6. Schemas and Types
+
+The **schema** is the backbone of a GraphQL API, defining available data types, relationships, and operations. It is a strongly-typed contract between the client and server.
+
+- **Core Types**: Define the structure and fields of data accessible in the API.
+- **Special Types**:
+  - **Query Type**: Defines entry points for reading data.
+  - **Mutation Type**: Defines entry points for modifying data.
+
+Example:
+```graphql
+type User {
+  id: ID!
+  name: String!
+  age: Int!
+}
+
+type Query {
+  getUser(id: ID!): User
+}
+
+type Mutation {
+  addUser(name: String!, age: Int!): User
+}
+```
+
+---
+
+#### 7. Resolvers
+
+**Resolvers** are functions that define how to retrieve or modify data for each type and field in the schema. They act as the bridge between the GraphQL schema and the data source (e.g., databases, other APIs).
+
+- **Structure**: Each field in the schema has a corresponding resolver function.
+- **Data Sources**: Resolvers can pull data from databases, REST APIs, or any other service.
+
+---
+
+#### 8. GraphQL Service and Structure
+
+GraphQL services consist of two main parts:
+
+1. **Structure**: Defined through a schema, dictating the API’s type system.
+2. **Behavior**: Implemented with resolver functions that process and return data according to schema requirements.
+
+---
+
+#### 9. GraphQL’s Graph-Based Model
+
+GraphQL uses a graph model, reflecting business domains as interconnected objects, enhancing the semantic representation of relationships and dependencies within data. The schema effectively acts as a shared, expressive language for developers, helping define the API’s domain model.
+
+---
+
+#### 10. GraphQL Language and Document Structure
+
+GraphQL requests consist of **documents** that may include multiple **operations** (queries, mutations, subscriptions) and **fragments** (reusable pieces of query structure).
+
+- **Document**: Contains the raw request, combining multiple queries or mutations.
+- **Fragments**: Allow reuse of query parts, enhancing modularity and readability.
+
+---
+
+### Summary
+
+GraphQL offers a flexible, efficient alternative to REST, solving issues of overfetching and underfetching by allowing clients to query precisely what they need. With a graph-based schema model, types, resolvers, and three operation types, GraphQL enables efficient, versatile, and strongly-typed API development.
