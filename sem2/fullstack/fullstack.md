@@ -1733,3 +1733,118 @@ OIDC is a layer built on top of OAuth 2.0, providing identity verification:
 ### Summary
 
 OAuth is a flexible authorization framework that supports a wide range of use cases, from user authentication to machine-to-machine communication. While OAuth itself focuses on delegation and resource access, OpenID Connect builds on it to enable secure identity verification for modern applications. By selecting the appropriate flow and adhering to security best practices, developers can build secure and user-friendly systems.
+
+Here are the detailed notes on the topics covered in the provided PDF, with added explanations where necessary:
+
+---
+
+### **Full Stack Application Development**
+
+#### **Frontend Development**
+- Frontend refers to the client side of web applications where user interaction occurs.
+- **Key Technologies**:
+  - **HTML**: Structures and gives meaning to web content.
+  - **CSS**: Styles the HTML content (e.g., fonts, colors, layout).
+  - **JavaScript (JS)**: Adds interactivity and dynamic behavior to web pages.
+
+---
+
+### **JavaScript (JS)**
+
+#### **Overview**
+- JavaScript is the **language of the web**, widely used for both frontend and backend development.
+- It is **single-threaded** and interpreted, meaning code runs line by line.
+- Common engines:
+  - Chrome uses **V8**.
+  - Firefox uses **SpiderMonkey**.
+
+#### **Execution Context**
+- Execution occurs in two main areas:
+  - **Memory Heap**: Allocates memory.
+  - **Call Stack**: Tracks execution flow using a LIFO (Last In, First Out) structure.
+
+#### **Execution Models**
+1. **Synchronous Execution**:
+   - Code executes in the order it appears.
+2. **Asynchronous Execution**:
+   - Uses mechanisms like `setTimeout`, AJAX, or Promises for delayed execution.
+   - Handled by:
+     - **Web APIs**: External tasks like DOM manipulation or fetching data.
+     - **Task Queue**: Stores callback functions for execution.
+     - **Event Loop**: Manages execution flow between Call Stack and Task Queue.
+
+---
+
+### **Web APIs**
+
+#### **Categories**
+1. **Browser APIs**:
+   - Built into browsers, allowing interaction with web features like audio, geolocation, and storage.
+2. **Third-party APIs**:
+   - Created by platforms (e.g., Google Maps API) to extend functionality.
+
+#### **Common APIs**
+- **DOM API**: Manipulates the structure and content of a webpage.
+- **Fetch API**: Retrieves data from servers.
+- **Canvas API**: Handles graphic rendering.
+- **Web Audio API**: Controls audio processing.
+- **Geolocation API**: Accesses location data.
+
+---
+
+### **Client-Side Storage**
+
+#### **Methods**
+1. **Cookies**:
+   - Small pieces of data stored by the browser to maintain state across HTTP requests.
+   - Limitations: Small size and sent with every request, affecting performance.
+2. **Web Storage API**:
+   - Provides `localStorage` (persistent) and `sessionStorage` (session-specific) storage options.
+   - Stores key-value pairs in string form.
+   - Methods:
+     - `setItem(key, value)` to store data.
+     - `getItem(key)` to retrieve data.
+     - `removeItem(key)` to delete specific data.
+3. **IndexedDB**:
+   - A low-level database for large-scale structured data storage.
+   - Organized around:
+     - **Database**: Contains object stores (similar to tables).
+     - **Object Store**: Holds data (like rows).
+     - **Transaction**: Wraps operations for database integrity.
+
+---
+
+### **Node.js Ecosystem**
+
+#### **Key Components**
+1. **Node.js Core**:
+   - Built on the V8 engine, enabling JavaScript to run outside browsers.
+   - Supports non-blocking I/O for better performance.
+2. **NPM (Node Package Manager)**:
+   - Command-line tool for managing project dependencies.
+3. **Express.js**:
+   - A minimalist framework for building web applications and APIs.
+4. **Webpack**:
+   - A bundler that optimizes and organizes code for deployment.
+
+#### **Use Cases**
+- Backend development (e.g., servers, file system management).
+- Sharing code across client and server.
+
+---
+
+### **Transpiling**
+- Converts newer JavaScript (e.g., ES6) into older versions for browser compatibility.
+- Tools like **Babel** are widely used for this purpose.
+
+---
+
+### **Additional Notes**
+1. **Event Loop**:
+   - Central to asynchronous behavior in JavaScript. Learn more via resources like [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop).
+2. **State Management**:
+   - Libraries (e.g., Redux) can be integrated to centralize and manage application state effectively.
+
+---
+
+This detailed overview summarizes and explains the PDF content with added context for clarity. If you need further elaboration on any section, let me know!
