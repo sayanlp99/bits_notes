@@ -1607,7 +1607,7 @@ OAuth is a protocol for **delegated access** that allows a third-party applicati
 4. Use **signed and structured tokens** (e.g., JWT) for stateless and verifiable authentication.
 5. For more advanced needs, adopt **OAuth** for delegated and token-based access control.
 
-### Full Stack Application Development: OAuth
+### OAuth
 
 This summary covers **OAuth**, its components, flows, security mechanisms, and the difference between OAuth and OpenID Connect (OIDC).
 
@@ -1622,11 +1622,15 @@ OAuth (Open Authorization) is an open standard for **access delegation**, enabli
   - Decouples **authentication** (identity verification) from **authorization** (access control).
   - Provides **limited access** to resources (scopes) without requiring passwords.
 
+![alt text](45.png)
+
 ---
 
 #### 2. Without OAuth
 
 Without OAuth, applications may require users to share their credentials directly with third-party services, increasing security risks. OAuth solves this by delegating access while keeping credentials confidential.
+
+![44](44.png)
 
 ---
 
@@ -1638,11 +1642,15 @@ OAuth relies on several core components:
    - Define the permissions requested by an application (e.g., access to email, calendar).
    - Users grant or deny these permissions during the authorization process.
 
+![alt text](44-1.png)
+
 2. **Actors**:
    - **Resource Owner**: The user who owns the data.
    - **Resource Server**: The API that stores the user's data.
    - **Client**: The application requesting access to the data.
    - **Authorization Server**: Issues tokens after verifying and authorizing requests.
+
+![alt text](47.png)
 
 3. **Tokens**:
    - **Access Tokens**: Used by clients to access the resource server.
@@ -1662,11 +1670,15 @@ OAuth defines multiple grant types (flows) to address different use cases:
      - The client receives an **authorization code**, which is exchanged for an access token.
    - **Security**: Secure since tokens are exchanged server-to-server, bypassing the browser.
 
+![alt text](48.png)
+
 2. **Implicit Flow**:
    - **Use Case**: Single Page Applications (SPAs).
    - **Process**:
      - The access token is returned directly from the authorization request.
    - **Limitations**: Less secure, no refresh tokens; vulnerable to token interception.
+
+![49](49.png)
 
 3. **Client Credentials Flow**:
    - **Use Case**: Machine-to-machine communication (e.g., APIs or cron jobs).
@@ -1674,21 +1686,29 @@ OAuth defines multiple grant types (flows) to address different use cases:
      - The client uses its own credentials (client ID and secret) to obtain an access token.
    - **Example**: Automating database imports via an API.
 
+![50](50.png)
+
 4. **Resource Owner Password Flow** (Legacy):
    - **Use Case**: Native username/password apps.
    - **Process**:
      - The client sends the user's credentials directly to the authorization server.
    - **Security**: Risky; should be avoided in favor of more secure flows.
 
+![alt text](51.png)
+
 5. **Authorization Code with PKCE**:
    - **Use Case**: Public clients like mobile or desktop apps.
    - **PKCE (Proof Key for Code Exchange)**:
      - Adds an additional code verifier to prevent **authorization code interception attacks**.
 
+![52](52.png)
+
 6. **Device Code Flow**:
    - **Use Case**: Input-limited devices like TVs and IoT devices.
    - **Process**:
      - The user authenticates via a secondary device (e.g., mobile phone or browser).
+
+![alt text](53.png)
 
 ---
 
@@ -1713,6 +1733,8 @@ OAuth defines multiple grant types (flows) to address different use cases:
 While OAuth is an **authorization protocol**, it is sometimes misused for authentication. Access tokens do not contain user information and are designed for resource access rather than identity verification.
 
 - **Solution**: Use **OpenID Connect (OIDC)**, which extends OAuth with authentication capabilities.
+
+![54](54.png)
 
 ---
 
