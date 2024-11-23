@@ -34,7 +34,7 @@
 
 #### Hybrid Apps
 - **Definition**: Combine elements of native and web applications, built using web technologies but run inside a native container.
-- **Pros**: No need for a web browser, access to device’s internal APIs and hardware, single codebase.
+- **Pros**: No need for a web browser, access to device's internal APIs and hardware, single codebase.
 - **Cons**: Slower than native apps, reliant on third-party platforms, limited customization support.
 - **Technologies**: HTML, CSS, JavaScript, Ionic, Apache Cordova, PhoneGap.
 
@@ -274,7 +274,7 @@
 ### **2. Variants of Client-Server Pattern**
 - **Peer-to-Peer (P2P) Applications:** Each node acts as both a client and server.
 - **Application Servers:** Provide services to client applications.
-- **Asynchronous Requests:** Clients don’t block while waiting for data.
+- **Asynchronous Requests:** Clients don't block while waiting for data.
 - **Server-Initiated Actions:** Servers can initiate actions on clients in some scenarios.
   ![7](7.png)
 
@@ -350,7 +350,7 @@
   - **SEO-Friendly:** Search engines can index static pages easily.
   
 - **Limitations:**
-  - **Not Suitable for Real-Time Data:** Static content can’t reflect live updates.
+  - **Not Suitable for Real-Time Data:** Static content can't reflect live updates.
   
 **Popular Tools:** Jekyll, Hugo, Gatsby.
 
@@ -715,7 +715,7 @@
 ### Client-Side and Server-Side in Web Communication
 
 #### **Client-Side**
-- **Definition**: The client-side refers to operations that are performed by the user’s device (browser, mobile app) when interacting with a server. 
+- **Definition**: The client-side refers to operations that are performed by the user's device (browser, mobile app) when interacting with a server. 
 - **Key Characteristics**:
   - The **client-side application** (e.g., frontend like React JS or AngularJS) sends requests to the server via HTTP protocols.
   - The **client-side** often cannot directly implement advanced techniques like Webhooks because they require a server to handle incoming HTTP POST requests.
@@ -812,10 +812,10 @@
 ### 9. **REST Constraints**
    To be RESTful, services must adhere to these six constraints:
    - **Client-Server Separation**: Server and client interact only via requests/responses, and are independent.
-   - **Stateless**: The server does not remember the client’s state between requests.
+   - **Stateless**: The server does not remember the client's state between requests.
    - **Cacheable**: Clients can cache responses for efficiency.
    - **Uniform Interface**: A consistent interface across the web with self-descriptive messages.
-   - **Layered System**: Clients don’t need to know if intermediaries (e.g., caching, security) exist between them and the server.
+   - **Layered System**: Clients don't need to know if intermediaries (e.g., caching, security) exist between them and the server.
    - **Code-on-Demand (Optional)**: Clients can request executable code from servers.
 
 ### 10. **Detailed REST Constraints**
@@ -1060,14 +1060,11 @@ Provide meaningful errors:
 
 ---
 
-### Full Stack Application Development: API Documentation and Versioning
+### API Documentation and Versioning
 
-This summary covers the **core topics** of REST design, API versioning, change management, semantic versioning, and documentation, along with **key practices** for designing scalable, efficient, and versionable APIs.
-
----
 
 #### 1. REST Design Principles
-REST (Representational State Transfer) leverages HTTP protocols to build scalable and flexible APIs. Here’s how to approach RESTful API design:
+REST (Representational State Transfer) leverages HTTP protocols to build scalable and flexible APIs. Here's how to approach RESTful API design:
 
 - **Resource Identification**: REST APIs are structured around resources, usually modeled after the main entities in a database (e.g., user profiles, orders). Use domain nouns that align with CRUD operations (Create, Read, Update, Delete).
   
@@ -1077,7 +1074,7 @@ REST (Representational State Transfer) leverages HTTP protocols to build scalabl
   - **Collections** (e.g., `/photos`) group resources under a shared context, while **items** represent individual resources (e.g., `/photos/1`).
   - **HATEOAS (Hypermedia As The Engine of Application State)**: Enables easier navigation between related resources. Use URIs such as `/orders/99/products` to retrieve all products in an order, reducing endpoint complexity.
 
-- **Avoid Database Mirroring**: Design APIs to present resources logically for users rather than mimicking the database’s internal structure.
+- **Avoid Database Mirroring**: Design APIs to present resources logically for users rather than mimicking the database's internal structure.
 
 ---
 
@@ -1129,6 +1126,11 @@ For APIs, semantic versioning often uses a simplified `BREAKING.NONBREAKING` for
 
 ---
 
+![35](35.png)
+
+
+![36](36.png)
+
 #### 5. API Documentation
 
 Comprehensive API documentation guides developers on how to integrate and use the API effectively. Popular documentation frameworks include:
@@ -1143,13 +1145,9 @@ Comprehensive API documentation guides developers on how to integrate and use th
 
 ---
 
-### Summary
+### gRPC
 
-API design and management involve carefully structuring resources, managing changes without disrupting client applications, and documenting the endpoints for ease of use. Adopting best practices in REST design, versioning strategies, and documentation frameworks like OpenAPI or Swagger can greatly enhance the usability and maintainability of an API.
-
-### Full Stack Application Development: gRPC
-
-This summary explains **gRPC’s role, structure, communication patterns**, and **implementation details** for building efficient and high-performance APIs.
+This summary explains **gRPC's role, structure, communication patterns**, and **implementation details** for building efficient and high-performance APIs.
 
 ---
 
@@ -1162,7 +1160,7 @@ gRPC (Google Remote Procedure Call) is an open-source RPC framework developed by
 
 #### 2. gRPC Architecture
 
-gRPC relies on **Protocol Buffers (protobuf)**, Google’s language-agnostic data serialization format, for defining services and exchanging messages between client and server.
+gRPC relies on **Protocol Buffers (protobuf)**, Google's language-agnostic data serialization format, for defining services and exchanging messages between client and server.
 
 - **Service Definition**:
   - A **service** is defined in a `.proto` file, specifying the interface methods and data types for client-server communication.
@@ -1174,13 +1172,15 @@ gRPC relies on **Protocol Buffers (protobuf)**, Google’s language-agnostic dat
 
 - **Client-Server Communication**:
   - **Server**: Implements service logic and runs a gRPC server that listens for and responds to client requests.
-  - **Client**: Uses the client stub to invoke the server’s methods, with the stub handling network calls to the server.
+  - **Client**: Uses the client stub to invoke the server's methods, with the stub handling network calls to the server.
+
+![37](37.png)
 
 ---
 
 #### 3. Protocol Buffers (protobuf)
 
-Protocol Buffers serve as both the **interface definition language (IDL)** and **message format** in gRPC. Here’s how protobuf structures data:
+Protocol Buffers serve as both the **interface definition language (IDL)** and **message format** in gRPC. Here's how protobuf structures data:
 
 - **Message Definition**: A message is defined with fields assigned unique identifiers (tags) used to encode data.
   - Example:
@@ -1201,6 +1201,8 @@ Protocol Buffers serve as both the **interface definition language (IDL)** and *
     }
     ```
 
+![38](38.png)
+
 ---
 
 #### 4. gRPC Communication Patterns
@@ -1214,12 +1216,16 @@ gRPC supports four key communication patterns that provide flexibility for diffe
      rpc getOrder(google.protobuf.StringValue) returns (Order);
      ```
 
+     ![39](39.png)
+
 2. **Server-Streaming RPC**:
    - The server sends a stream of responses after receiving a single request from the client.
    - Example:
      ```protobuf
      rpc searchOrders(google.protobuf.StringValue) returns (stream Order);
      ```
+
+     ![40](40.png)
 
 3. **Client-Streaming RPC**:
    - The client sends multiple messages, and the server responds once all messages are received.
@@ -1228,12 +1234,18 @@ gRPC supports four key communication patterns that provide flexibility for diffe
      rpc updateOrders(stream Order) returns (google.protobuf.StringValue);
      ```
 
+    ![41](41.png)
+
 4. **Bidirectional Streaming RPC**:
    - Both client and server send streams of messages, enabling a two-way conversation.
    - Example:
      ```protobuf
      rpc processOrders(stream google.protobuf.StringValue) returns (stream CombinedShipment);
      ```
+
+    ![42](42.png)
+
+
 
 ---
 
@@ -1290,9 +1302,9 @@ While powerful, gRPC has limitations:
 
 gRPC offers a modern, efficient framework for building high-performance, strongly-typed, and scalable microservices. With protocol buffers, HTTP/2, and support for multiple communication patterns, it has become a popular choice for internal communication in distributed systems. However, understanding its limitations and carefully planning schema changes are crucial for effective use.
 
-### Full Stack Application Development: GraphQL
+### GraphQL
 
-This summary delves into **GraphQL’s structure, operations, schemas, types, and resolvers**—highlighting its advantages over REST and its practical implementation in modern APIs.
+This summary delves into **GraphQL's structure, operations, schemas, types, and resolvers**—highlighting its advantages over REST and its practical implementation in modern APIs.
 
 ---
 
@@ -1308,7 +1320,7 @@ GraphQL is a **query language** and **runtime** for APIs, enabling clients to sp
 
 ---
 
-#### 2. Drawbacks of REST and GraphQL’s Advantages
+#### 2. Drawbacks of REST and GraphQL's Advantages
 
 REST APIs often struggle with:
 
@@ -1322,7 +1334,7 @@ GraphQL solves these issues by allowing clients to request exactly what they nee
 
 #### 3. GraphQL Queries
 
-GraphQL queries allow clients to fetch deeply nested and related data with a single request, enhancing efficiency. Here’s a sample query and response:
+GraphQL queries allow clients to fetch deeply nested and related data with a single request, enhancing efficiency. Here's a sample query and response:
 
 ```graphql
 query {
@@ -1346,6 +1358,13 @@ query {
         "author": {
           "name": "John Doe",
           "email": "john.doe@example.com"
+        }
+      },
+      {
+        "title": "Introduction to SQL",
+        "author": {
+          "name": "Mary Ann",
+          "email": "mary.ann@example.com"
         }
       }
     ]
@@ -1432,14 +1451,14 @@ type Mutation {
 
 GraphQL services consist of two main parts:
 
-1. **Structure**: Defined through a schema, dictating the API’s type system.
+1. **Structure**: Defined through a schema, dictating the API's type system.
 2. **Behavior**: Implemented with resolver functions that process and return data according to schema requirements.
 
 ---
 
-#### 9. GraphQL’s Graph-Based Model
+#### 9. GraphQL's Graph-Based Model
 
-GraphQL uses a graph model, reflecting business domains as interconnected objects, enhancing the semantic representation of relationships and dependencies within data. The schema effectively acts as a shared, expressive language for developers, helping define the API’s domain model.
+GraphQL uses a graph model, reflecting business domains as interconnected objects, enhancing the semantic representation of relationships and dependencies within data. The schema effectively acts as a shared, expressive language for developers, helping define the API's domain model.
 
 ---
 
@@ -1483,6 +1502,8 @@ Basic Authentication uses HTTP headers to transmit credentials:
   - Single-factor authentication.
   - Vulnerable to credential exposure if transmitted insecurely.
   - Lacks advanced security measures.
+
+  ![43](43.png)
 
 ---
 
@@ -1594,7 +1615,7 @@ This summary covers **OAuth**, its components, flows, security mechanisms, and t
 
 #### 1. What is OAuth?
 
-OAuth (Open Authorization) is an open standard for **access delegation**, enabling third-party applications to securely access a user’s data without exposing credentials.
+OAuth (Open Authorization) is an open standard for **access delegation**, enabling third-party applications to securely access a user's data without exposing credentials.
 
 - **Key Features**:
   - Works over HTTPS for secure communication.
@@ -1656,7 +1677,7 @@ OAuth defines multiple grant types (flows) to address different use cases:
 4. **Resource Owner Password Flow** (Legacy):
    - **Use Case**: Native username/password apps.
    - **Process**:
-     - The client sends the user’s credentials directly to the authorization server.
+     - The client sends the user's credentials directly to the authorization server.
    - **Security**: Risky; should be avoided in favor of more secure flows.
 
 5. **Authorization Code with PKCE**:
@@ -1884,7 +1905,7 @@ Here are detailed notes on the topics covered in the provided PDF about ReactJS,
 #### **Declarative Syntax Simplification**
 - Example:
   - **Imperative**: Manually creating and appending DOM elements.
-  - **Declarative**: Using JSX or React’s `createElement()` for a simpler, readable syntax.
+  - **Declarative**: Using JSX or React's `createElement()` for a simpler, readable syntax.
 
 ---
 
