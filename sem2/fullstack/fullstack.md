@@ -1734,7 +1734,6 @@ While OAuth is an **authorization protocol**, it is sometimes misused for authen
 
 - **Solution**: Use **OpenID Connect (OIDC)**, which extends OAuth with authentication capabilities.
 
-![54](54.png)
 
 ---
 
@@ -1758,6 +1757,8 @@ OIDC is a layer built on top of OAuth 2.0, providing identity verification:
 | **Primary Use Case**  | Granting access to resources               | Verifying user identity                  |
 | **User Information**  | Not included                               | Provided via ID Token or UserInfo API    |
 
+![54](54.png)
+
 ---
 
 ### Summary of OAuth Flows
@@ -1777,13 +1778,9 @@ OIDC is a layer built on top of OAuth 2.0, providing identity verification:
 
 OAuth is a flexible authorization framework that supports a wide range of use cases, from user authentication to machine-to-machine communication. While OAuth itself focuses on delegation and resource access, OpenID Connect builds on it to enable secure identity verification for modern applications. By selecting the appropriate flow and adhering to security best practices, developers can build secure and user-friendly systems.
 
-Here are the detailed notes on the topics covered in the provided PDF, with added explanations where necessary:
-
 ---
 
-### **Full Stack Application Development**
-
-#### **Frontend Development**
+### **Frontend Development**
 - Frontend refers to the client side of web applications where user interaction occurs.
 - **Key Technologies**:
   - **HTML**: Structures and gives meaning to web content.
@@ -1792,21 +1789,21 @@ Here are the detailed notes on the topics covered in the provided PDF, with adde
 
 ---
 
-### **JavaScript (JS)**
+#### **JavaScript (JS)**
 
-#### **Overview**
+##### **Overview**
 - JavaScript is the **language of the web**, widely used for both frontend and backend development.
 - It is **single-threaded** and interpreted, meaning code runs line by line.
 - Common engines:
   - Chrome uses **V8**.
   - Firefox uses **SpiderMonkey**.
 
-#### **Execution Context**
+##### **Execution Context**
 - Execution occurs in two main areas:
   - **Memory Heap**: Allocates memory.
   - **Call Stack**: Tracks execution flow using a LIFO (Last In, First Out) structure.
 
-#### **Execution Models**
+##### **Execution Models**
 1. **Synchronous Execution**:
    - Code executes in the order it appears.
 2. **Asynchronous Execution**:
@@ -1818,15 +1815,15 @@ Here are the detailed notes on the topics covered in the provided PDF, with adde
 
 ---
 
-### **Web APIs**
+#### **Web APIs**
 
-#### **Categories**
+##### **Categories**
 1. **Browser APIs**:
    - Built into browsers, allowing interaction with web features like audio, geolocation, and storage.
 2. **Third-party APIs**:
    - Created by platforms (e.g., Google Maps API) to extend functionality.
 
-#### **Common APIs**
+##### **Common APIs**
 - **DOM API**: Manipulates the structure and content of a webpage.
 - **Fetch API**: Retrieves data from servers.
 - **Canvas API**: Handles graphic rendering.
@@ -1835,9 +1832,9 @@ Here are the detailed notes on the topics covered in the provided PDF, with adde
 
 ---
 
-### **Client-Side Storage**
+#### **Client-Side Storage**
 
-#### **Methods**
+##### **Methods**
 1. **Cookies**:
    - Small pieces of data stored by the browser to maintain state across HTTP requests.
    - Limitations: Small size and sent with every request, affecting performance.
@@ -1857,9 +1854,9 @@ Here are the detailed notes on the topics covered in the provided PDF, with adde
 
 ---
 
-### **Node.js Ecosystem**
+#### **Node.js Ecosystem**
 
-#### **Key Components**
+##### **Key Components**
 1. **Node.js Core**:
    - Built on the V8 engine, enabling JavaScript to run outside browsers.
    - Supports non-blocking I/O for better performance.
@@ -1887,12 +1884,6 @@ Here are the detailed notes on the topics covered in the provided PDF, with adde
    - Central to asynchronous behavior in JavaScript. Learn more via resources like [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop).
 2. **State Management**:
    - Libraries (e.g., Redux) can be integrated to centralize and manage application state effectively.
-
----
-
-This detailed overview summarizes and explains the PDF content with added context for clarity. If you need further elaboration on any section, let me know!
-
-Here are detailed notes on the topics covered in the provided PDF about ReactJS, along with additional explanations for clarity:
 
 ---
 
@@ -2090,12 +2081,6 @@ Here are detailed notes on the topics covered in the provided PDF about ReactJS,
 
 ---
 
-This comprehensive summary incorporates all major points from the PDF, with additional explanations for better understanding. Let me know if you'd like further clarifications or deep dives into specific topics!
-
-Here are detailed notes based on the content of the PDF file **CS15_React_continued.pdf**, which explains key React concepts and includes additional context for better understanding:
-
----
-
 ### **React Concepts and State Management**
 
 #### **State**
@@ -2140,6 +2125,8 @@ Here are detailed notes based on the content of the PDF file **CS15_React_contin
 - **Usage**:
   - Provide a context in a parent component.
   - Consume it in child components using `useContext`.
+
+![55](55.png)
 
 ---
 
@@ -2249,12 +2236,6 @@ Here are detailed notes based on the content of the PDF file **CS15_React_contin
   - Keep components reusable and maintainable.
   - Leverage Context for shared state but switch to Redux for more complex scenarios.
   - Optimize state updates to prevent unnecessary re-renders.
-
---- 
-
-Feel free to ask for clarification on any section or additional deep dives into specific topics!
-
-Here are detailed notes based on the content of the PDF file **CS16.1_accessibility and performance.pdf**, enhanced with additional context and examples:
 
 ---
 
@@ -2385,16 +2366,12 @@ Replace generic `<div>` and `<span>` tags with semantic elements:
 
 ---
 
-Let me know if you'd like more examples, tools, or specific implementation details!
-
-Here are comprehensive notes from the PDF **CS16_Testing.pdf** on the topic of testing in full-stack application development, supplemented with additional explanations and examples for clarity:
-
----
-
 ### **Testing in Full-Stack Application Development**
 
 #### **Frontend Testing**
 Frontend testing ensures that the user-facing part of an application behaves as expected across various scenarios.
+
+![57](57.png)
 
 1. **Unit Testing**:
    - Focuses on individual components or functionalities in isolation.
@@ -2510,6 +2487,8 @@ API testing evaluates the functionality, reliability, and security of applicatio
   2. Provider develops and tests against these expectations.
   3. Contracts ensure compatibility even if either side updates.
 
+![56](56.png)
+
 #### **Resources**:
 - OpenAPI: [https://www.openapis.org/](https://www.openapis.org/)
 - Additional guide: [SemaphoreCI Blog on Microservices Testing](https://semaphoreci.com/blog/test-microservices)
@@ -2523,5 +2502,3 @@ API testing evaluates the functionality, reliability, and security of applicatio
 4. Regularly update test cases to reflect codebase changes.
 
 ---
-
-These notes summarize the essential concepts and tools for testing in full-stack application development, ensuring applications are reliable, accessible, and maintainable. Let me know if you'd like deeper insights or examples for any specific topic!
