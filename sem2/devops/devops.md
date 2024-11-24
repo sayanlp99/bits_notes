@@ -121,16 +121,16 @@
    - The job title "DevOps engineer" is often debated. DevOps is more about specialization in roles, and its core is a cultural movement that requires adoption across the entire organization.
 
 4. **You Need a DevOps Certification**:
-   - Certifications test knowledge, but DevOps is about culture and doesn’t have strict technology requirements or one-size-fits-all solutions.
+   - Certifications test knowledge, but DevOps is about culture and doesn't have strict technology requirements or one-size-fits-all solutions.
 
 5. **DevOps Means Doing All the Work with Half the People**:
-   - This misconception is harmful. DevOps doesn’t reduce the number of engineers needed but enhances the quality and efficiency of work.
+   - This misconception is harmful. DevOps doesn't reduce the number of engineers needed but enhances the quality and efficiency of work.
 
 6. **DevOps Is About Automation**:
-   - Automation is a result of improved technology, but DevOps is not just about automation. It’s about improving efficiency and allowing engineers to focus on more complex tasks.
+   - Automation is a result of improved technology, but DevOps is not just about automation. It's about improving efficiency and allowing engineers to focus on more complex tasks.
 
 7. **DevOps Is a FAD**:
-   - DevOps is not just a buzzword or a trend. It’s a movement focused on improving organizational effectiveness and employee satisfaction. It's defined by stories and ideas rather than strict processes.
+   - DevOps is not just a buzzword or a trend. It's a movement focused on improving organizational effectiveness and employee satisfaction. It's defined by stories and ideas rather than strict processes.
 
 #### **Three Dimensions of DevOps**
 - **People**: Emphasizes the importance of human resources and collaboration in DevOps.
@@ -290,7 +290,7 @@
 
 #### **3. Types of Cloud Services**
 - **Software as a Service (SaaS)**:
-  - The consumer uses the provider’s applications running on a cloud infrastructure. The applications are accessible from various client devices through a web browser or API.
+  - The consumer uses the provider's applications running on a cloud infrastructure. The applications are accessible from various client devices through a web browser or API.
   - **Examples**: Google Apps, Salesforce, Cisco WebEx, Office 365.
   - **Key Points**: 
     - Users do not manage or control the underlying cloud infrastructure or even individual application capabilities.
@@ -391,8 +391,8 @@
 
 #### **11. VCS Terminology**
 - **Baseline**: An approved revision of a document or project that serves as a starting point for future changes.
-- **Branch**: An independent line of development created from a common starting point in the project’s history.
-- **Commit**: The action of saving changes to the version control repository, making them a permanent part of the project’s history.
+- **Branch**: An independent line of development created from a common starting point in the project's history.
+- **Commit**: The action of saving changes to the version control repository, making them a permanent part of the project's history.
 - **Clone**: A complete copy of a version control repository, including all its history and branches.
 - **Merge**: The process of integrating changes from one branch into another, combining different sets of changes into a unified codebase.
 
@@ -401,16 +401,16 @@
   - A repository is the storage location for all versions of the files in a project. It contains the complete history of changes made over time.
   
 - **Working Copy**:
-  - A working copy is a snapshot of the repository, typically on a developer’s local machine, where they can make changes to the project.
+  - A working copy is a snapshot of the repository, typically on a developer's local machine, where they can make changes to the project.
 
 - **Committing Changes**:
-  - The process of saving modifications from the working copy to the repository. Each commit creates a new revision in the project’s history.
+  - The process of saving modifications from the working copy to the repository. Each commit creates a new revision in the project's history.
 
 - **Updating**:
   - Synchronizing the working copy with the latest version from the repository, ensuring that the local environment is up-to-date with any changes made by other developers.
 
 - **Adding Files**:
-  - Including new files or directories in version control, making them part of the project’s history.
+  - Including new files or directories in version control, making them part of the project's history.
 
 - **Deleting Files**:
   - Removing files or directories from version control, ensuring they are no longer part of the project.
@@ -432,7 +432,7 @@ Git is a widely used distributed version control system. It allows teams to coll
 #### **1. Git Repository Creation**
 
 - **Option 1: Initialize a repository in an existing directory**
-  - To add version control to a project that’s not currently under Git, navigate to the directory and initialize a repository using:
+  - To add version control to a project that's not currently under Git, navigate to the directory and initialize a repository using:
     ```bash
     git init
     ```
@@ -483,7 +483,7 @@ Git is a widely used distributed version control system. It allows teams to coll
 
 #### **6. Renaming or Moving Files**
 
-- Git doesn’t store metadata for file renaming. Instead, use:
+- Git doesn't store metadata for file renaming. Instead, use:
   ```bash
   git mv <old_filename> <new_filename>
   ```
@@ -550,7 +550,7 @@ Git is a widely used distributed version control system. It allows teams to coll
 
 #### **2. Git Reset**
 
-- While `git reset` can undo commits and remove them from history, it’s less safe than `revert` as it can lead to losing changes.
+- While `git reset` can undo commits and remove them from history, it's less safe than `revert` as it can lead to losing changes.
 
 #### **1. Overview of Git Reset**
 The `git reset` command is used to undo changes in Git repositories. It can operate in three modes: **soft**, **mixed**, and **hard**, each of which affects the commit history, staging index, and working directory in different ways.
@@ -791,7 +791,7 @@ The `git reset` command is used to undo changes in Git repositories. It can oper
   - Git pulls down all project history during a `git clone`, ensuring resilience. Even if the central server is lost, other cloned repositories can restore the history.
 
 - **Snapshot-based Storage**:
-  - Git doesn’t track individual file changes. Instead, it stores snapshots of the entire project’s state at each commit. This model makes branching and committing efficient.
+  - Git doesn't track individual file changes. Instead, it stores snapshots of the entire project's state at each commit. This model makes branching and committing efficient.
 
 ---
 
@@ -1083,7 +1083,7 @@ Selenium Grid allows for parallel and distributed test execution, improving test
 
 **SonarQube Overview**:
 - A tool used to provide real-time insights into code health and detect newly introduced issues.
-- SonarQube’s **Quality Gate** ensures systematic improvement by highlighting critical issues as soon as they occur.
+- SonarQube's **Quality Gate** ensures systematic improvement by highlighting critical issues as soon as they occur.
 
 ---
 
@@ -1257,7 +1257,7 @@ Selenium Grid allows for parallel and distributed test execution, improving test
    - **Checklist for CD:**
      1. **Check build status before submitting code**: Ensure the build is successful before pushing new changes.
      2. **Rebase locally**: Before submitting code, update your local environment with the latest changes from the main branch.
-     3. **Local tests**: Run tests locally to verify that your changes don’t break the build.
+     3. **Local tests**: Run tests locally to verify that your changes don't break the build.
      4. **Submit changes**: Push your code only if the local build passes.
      5. **Monitor the CI system**: Ensure the build passes in the CI environment.
      6. **Fix any issues**: If the build fails, fix the issue locally before continuing.
@@ -1291,7 +1291,7 @@ Continuous Delivery is the practice of building software that is always ready to
 1. **Every build is a potential release**: Any build can be deployed to production, implying the readiness of software at any time.
 2. **Eliminate manual bottlenecks**: Focus on reducing manual intervention in the development and deployment process to avoid delays.
 3. **Automate wherever possible**: Tasks such as testing, integration, and deployment should be automated.
-4. **Automated tests you can trust**: The testing suite must be robust and reliable to ensure that automation provides accurate feedback on the software’s readiness.
+4. **Automated tests you can trust**: The testing suite must be robust and reliable to ensure that automation provides accurate feedback on the software's readiness.
 
 ---
 
@@ -1336,7 +1336,7 @@ Continuous Delivery is the practice of building software that is always ready to
 ---
 
 ### **Continuous Integration (CI)**
-- **CI Definition**: All developers integrate their work daily. It’s a process, not a tool, though tools like Jenkins or CircleCI can assist.
+- **CI Definition**: All developers integrate their work daily. It's a process, not a tool, though tools like Jenkins or CircleCI can assist.
 - **Benefits**: Ensures that the code is always in a deployable state.
   
 ---
@@ -1364,7 +1364,7 @@ A CI server can:
 - **Reproducibility**: Ensuring that builds are consistent across environments.
 - **Testing**: Various types of automated tests reduce risk and ensure reliability.
 - **Deployment**: Deployment to production should be as automated as possible, often with the press of a button.
-- **Continuous Integration**: Every commit should trigger the integration pipeline to check the new code’s compatibility with the system.
+- **Continuous Integration**: Every commit should trigger the integration pipeline to check the new code's compatibility with the system.
 
 ---
 
@@ -1589,7 +1589,7 @@ Self-healing systems are designed to detect, respond, and recover from faults wi
 #### **Fault Model in Self-Healing**:
 - **Fault Source**: Identify where the fault originated (e.g., hardware, software).
 - **Fault Duration**: How long the fault impacts the system.
-- **System Response**: The system’s ability to detect, degrade gracefully, and recover from the fault.
+- **System Response**: The system's ability to detect, degrade gracefully, and recover from the fault.
 
 #### **Architectural Approach**:
 Self-healing systems often require **reconfiguration**. The system can locate alternative components, restart failed ones, or rejuvenate itself. These approaches can be implemented through **reflective middleware**.
@@ -1770,12 +1770,6 @@ Deployment refers to the process of placing a new or updated version of software
 
 ---
 
-If you would like, I can expand on any specific topic or provide additional references to related concepts. Let me know!
-
-Here are comprehensive notes from the second uploaded file, covering all topics in detail and enriched with additional context:
-
----
-
 ## **Advanced Concepts in Deployment and Release Management**
 
 ### **1. Rolling Upgrade in Cloud**
@@ -1927,9 +1921,6 @@ Race conditions occur when:
 4. **Release Strategies**: Plan and document thoroughly for reliability.
 5. **Testing Pipelines**: Use staged workflows with defined approval points.
 
-If you need further elaboration on any topic or examples for implementation, let me know!
-
-Here are comprehensive notes based on the content from the third uploaded file, structured for clarity and completeness, with added context for deeper understanding:
 
 ---
 
@@ -2095,12 +2086,6 @@ Here are comprehensive notes based on the content from the third uploaded file, 
 ### **Conclusion**
 Deployment strategies and continuous deployment practices are critical for modern software systems. By employing methods like blue-green deployment, canary releasing, and robust rollback plans, organizations can achieve faster delivery cycles, minimal downtime, and reliable systems. Continuous improvement and automation amplify these benefits, fostering innovation and responsiveness.
 
-Let me know if you’d like further clarification or examples on any topic!
-
-I'll extract detailed notes from the provided PDF and expand them with additional context and explanations as required. This may take a few moments.
-
-Here are detailed notes extracted from the document, expanded with explanations where needed:
-
 ---
 
 ### **Introduction to Monitoring in DevOps**
@@ -2219,12 +2204,6 @@ Here are detailed notes extracted from the document, expanded with explanations 
 
 ### **Practical Applications**
 - Effective monitoring ensures high availability, reliability, and performance for systems, especially in high-scale deployments like e-commerce platforms or SaaS applications.
-
----
-
-Let me know if you'd like any specific sections expanded further or additional information added!
-
-Here are detailed notes extracted from the second document, expanded with explanations where necessary:
 
 ---
 
@@ -2352,12 +2331,6 @@ Here are detailed notes extracted from the second document, expanded with explan
 
 ---
 
-Let me know if you'd like a deeper dive into specific sections or additional details!
-
-Here are detailed notes extracted from the third document, expanded with detailed explanations:
-
----
-
 ### **Elasticsearch Clustering**
 - **Overview**:
   - Elasticsearch clusters are groups of interconnected nodes that work together to store and search data.
@@ -2368,7 +2341,7 @@ Here are detailed notes extracted from the third document, expanded with detaile
   - Suitable for development or small-scale environments.
 
 - **Adding a Second Node**:
-  - Expands the cluster’s capacity by distributing data and workloads across two nodes.
+  - Expands the cluster's capacity by distributing data and workloads across two nodes.
   - Increases resilience; if one node fails, the other can take over.
 
 - **Adding a Third Node**:
@@ -2409,7 +2382,7 @@ Here are detailed notes extracted from the third document, expanded with detaile
 
 ### **Cisco Talos Security**
 - **Introduction**:
-  - Talos is Cisco’s threat intelligence and research group.
+  - Talos is Cisco's threat intelligence and research group.
   - It monitors and analyzes global cyber threats to protect systems.
 
 - **Hunting Hackers**:
@@ -2597,18 +2570,6 @@ DevOps is a combination of **Development (Dev)** and **Operations (Ops)** aimed 
 
 ---
 
-If any specific area needs further explanation or diagrams, let me know!
-
-The newly uploaded document also appears to be a lecture on DevOps, potentially a continuation or another set of related notes. I'll analyze and extract the content into detailed, comprehensive notes similar to the previous set. This will include additional explanations, diagrams, and enhanced coverage of all topics mentioned. 
-
-Let me begin.
-
-I'll now process the content of the newly uploaded document and compile detailed notes. It may take a moment.
-
-Here are the detailed notes for the content extracted from the second file, **"Introduction to DevOps - Lecture 13 and 14"**:
-
----
-
 ### **DevOps Continuation: Advanced Topics**
 
 #### **Key Areas Explored**
@@ -2761,12 +2722,6 @@ Here are the detailed notes for the content extracted from the second file, **"I
 ### **Conclusion**
 DevOps represents a cultural and technical shift in how software is developed and deployed. Success depends on collaboration, automation, and continuous improvement. Tools and practices discussed here provide a roadmap to efficient and secure development workflows.
 
-If additional areas need diagrams or in-depth explanation, let me know!
-
-I'll now analyze the contents of the newly uploaded document and compile detailed, structured notes similar to the previous ones. This will cover all the content, including additional explanations and diagrams where necessary. Let me process this.
-
-Here are detailed notes for the contents of **"Introduction to DevOps - Lecture 13 and 14" (Third File)**:
-
 ---
 
 ### **DevOps: Advanced Insights**
@@ -2873,16 +2828,15 @@ To measure DevOps success, track the following metrics:
 ### **Conclusion**
 DevOps continues to adapt to the challenges of modern software development. Embracing trends like GitOps, AIOps, and chaos engineering while addressing legacy integration and security ensures long-term success.
 
-If specific sections require diagrams or additional explanations, feel free to ask!
-
-Here are detailed notes based on the provided PDF file, covering all topics comprehensively and with additional context where necessary:
-
----
 
 ## **Virtualization**
 ### **Introduction**
 - Virtualization is a technology that allows the creation of IT services using resources typically tied to hardware.
-- It enhances the utilization of a physical machine’s capacity by distributing its capabilities across multiple users or environments.
+- It enhances the utilization of a physical machine's capacity by distributing its capabilities across multiple users or environments.
+
+![18](18.png)
+
+![19](19.png)
 
 #### **Example Use Case**
 - Traditionally, physical servers hosted specific services (e.g., web, database, email) with underutilized capacity.
@@ -3030,5 +2984,3 @@ Here are detailed notes based on the provided PDF file, covering all topics comp
 - Supports rapid deployment of serverless architectures.
 
 ---
-
-If you need further elaboration on any section or specific technical examples, feel free to ask!
